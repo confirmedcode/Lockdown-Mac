@@ -20,10 +20,11 @@ struct MenuView: View {
         
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text("\((getAPICredentials() != nil) ? getAPICredentials()!.email : "Not Signed In")")
+                Text("\((getAPICredentials() != nil) ? getAPICredentials()!.email : "Not Signed In\nSign Up With Lockdown iOS")")
                     .font(cFontSubtitle2)
                     .padding(.leading, 10)
-                    .frame(height: 24)
+                    .multilineTextAlignment(.center)
+                    .frame(height: 28)
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .minimumScaleFactor(0.5)
                 Button(
@@ -47,7 +48,8 @@ struct MenuView: View {
                 }
                 .buttonStyle(BlueButtonStyle())
                 .cornerRadius(8)
-                .padding(8)
+                .padding(.vertical, 6)
+                .padding(.horizontal, 6)
             }
             .background(Color.mainBackground)
             .cornerRadius(8)

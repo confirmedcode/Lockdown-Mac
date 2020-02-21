@@ -40,6 +40,7 @@ struct BlockListsView: View {
                     List (blockLists, id: \.name) { blockList in
                         BlockListRow(blockList: blockList)
                     }
+                    .accessibility(label: Text("Suggested Default Block Lists"))
                 }
                 
                 Divider()
@@ -98,6 +99,7 @@ struct BlockListsView: View {
                             Divider()
                         }
                     }
+                    .accessibility(label: Text("Custom Blocked Domains List"))
                 }
             }
         }
@@ -154,6 +156,7 @@ struct BlockListRow: View {
                     Text("?")
                     .frame(width: 16, height: 16)
                     .foregroundColor(Color(NSColor.labelColor))
+                    .accessibility(label: Text("View Hostnames"))
                 }
                 .popover(isPresented: $showDomains) {
                     DomainsModalView(showModal: self.$showDomains, title: self.blockList.lockdownGroup.name, blockListDomains: self.blockList.lockdownGroup.domains.keys.sorted())
