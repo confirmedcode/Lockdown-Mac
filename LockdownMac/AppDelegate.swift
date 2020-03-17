@@ -170,5 +170,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         })
     }
     
+    func application(_ application: NSApplication, open urls: [URL]) {
+        
+//        guard let url = urls.first, let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true), let host = components.host else {
+//            print("No url found")
+//            return
+//        }
+//
+//        if (host == "emailconfirmed") {
+            let alert = NSAlert()
+            alert.messageText = "Please open this confirmation email link from your iPhone or iPad to complete signup."
+            alert.addButton(withTitle: "Okay")
+            alert.runModal()
+//        }
+        
+    }
+    
 }
 
