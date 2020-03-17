@@ -61,7 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        // TODO: comment out for production
+//        // TODO: comment out for production
 //        try? keychain.removeAll()
 //        for key in defaults.dictionaryRepresentation().keys {
 //            defaults.removeObject(forKey: key)

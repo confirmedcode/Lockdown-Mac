@@ -15,6 +15,7 @@ import PromiseKit
 import CocoaLumberjackSwift
 
 let kHasAgreedToFirewallPrivacyPolicy = "kHasAgreedToFirewallPrivacyPolicy"
+let kHasSeenIKEv2Dialog = "kHasSeenIKEv2Dialog"
 
 var toggleVPNinProgress: Bool = false
 
@@ -378,7 +379,10 @@ struct ContentView: View {
         }
         // otherwise set it to the flipped status
         else {
-            FirewallController.shared.setEnabled(newFirewallStatus)
+            FirewallController.shared.setEnabled(newFirewallStatus, completion: {
+                success in
+                NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+            })
         }
     }
     
@@ -409,7 +413,20 @@ struct ContentView: View {
                 }
                 .done { (getKey: GetKey) in
                     try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                    VPNController.shared.setEnabled(true)
+                    
+                    if (defaults.bool(forKey: kHasSeenIKEv2Dialog) == false) {
+                        let alert = NSAlert()
+                        alert.informativeText = "You may see a dialog that says \"NEIKEv2Provider wants to access key 'privateKey' in your keychain\".\n\nTo complete setup, enter your system password (the password you use to log into your computer) and click \"Always Allow\"."
+                        alert.messageText = "Secure Tunnel Setup"
+                        alert.addButton(withTitle: "Okay")
+                        alert.runModal()
+                        defaults.set(true, forKey: kHasSeenIKEv2Dialog)
+                    }
+                    
+                    VPNController.shared.setEnabled(true, completion: {
+                        success in
+                        NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+                    })
                     toggleVPNinProgress = false
                 }
                 .catch { error in

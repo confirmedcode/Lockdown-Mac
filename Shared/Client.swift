@@ -129,7 +129,7 @@ class Client {
     }
     
     static func makePostRequest(urlString: String, parameters: [String: Any]) throws -> URLRequest {
-        DDLogInfo("makePostRequest: \(urlString), parameters: \(parameters)")
+        DDLogInfo("makePostRequest: \(urlString)") //, parameters: \(parameters)")
         if let url = URL(string: urlString) {
             var rq = URLRequest(url: url)
             rq.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
