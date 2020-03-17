@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "statusBarDisabled.png",
+      "filename" : "0unlockedsmall.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "statusBarDisabled@2x.png",
+      "filename" : "0unlockedbig.png",
       "scale" : "2x"
     }
   ],

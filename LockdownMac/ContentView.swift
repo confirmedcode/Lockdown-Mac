@@ -16,6 +16,8 @@ import CocoaLumberjackSwift
 
 let kHasAgreedToFirewallPrivacyPolicy = "kHasAgreedToFirewallPrivacyPolicy"
 
+var toggleVPNinProgress: Bool = false
+
 struct ContentView: View {
     
     @ObservedObject var firewallState = TunnelState()
@@ -200,13 +202,18 @@ struct ContentView: View {
                 Spacer()
                 
                 LoadingCircle(toggleTapped: {
-                    DDLogInfo("toggle VPN")
-                    // get creds if we don't have it
-                    if getAPICredentials() == nil {
-                        self.showEmailLogin = true
+                    if (toggleVPNinProgress == true) {
+                        DDLogInfo("toggle VPN in progress, ignoring click")
                     }
                     else {
-                        self.toggleVPN()
+                        DDLogInfo("toggle VPN")
+                        // get creds if we don't have it
+                        if getAPICredentials() == nil {
+                            self.showEmailLogin = true
+                        }
+                        else {
+                            self.toggleVPN()
+                        }
                     }
                 }, tunnelState: vpnState)
                 .frame(width: 100, height: 100)
@@ -376,6 +383,8 @@ struct ContentView: View {
     }
     
     func toggleVPN() {
+        // don't allow toggling VPN while toggling is already in progress
+        toggleVPNinProgress = true
         // flip the user preference
         let newVPNShouldBeConnectedStatus = !getUserWantsVPNEnabled()
         DDLogInfo("new UserWantsVPNEnabled: \(newVPNShouldBeConnectedStatus)")
@@ -390,7 +399,7 @@ struct ContentView: View {
             }
             
             // Delay to give time for Firewall to turn off
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 firstly {
                     try Client.signInWithEmail()
                 }
@@ -401,6 +410,7 @@ struct ContentView: View {
                 .done { (getKey: GetKey) in
                     try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
                     VPNController.shared.setEnabled(true)
+                    toggleVPNinProgress = false
                 }
                 .catch { error in
                     setUserWantsVPNEnabled(false)
@@ -429,6 +439,7 @@ struct ContentView: View {
                     }
                     
                     self.showError = true
+                    toggleVPNinProgress = false
                 }
             }
             
@@ -439,6 +450,7 @@ struct ContentView: View {
             if (getUserWantsFirewallEnabled()) {
                 FirewallController.shared.setEnabled(true)
             }
+            toggleVPNinProgress = false
         }
     }
 

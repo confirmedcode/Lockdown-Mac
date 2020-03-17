@@ -23,11 +23,13 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.confirmed.lockdownMac</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tunnels</string>
+				<string>lockdown</string>
 			</array>
 		</dict>
 	</array>

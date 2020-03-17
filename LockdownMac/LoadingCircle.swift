@@ -25,37 +25,39 @@ struct LoadingCircle: View {
     
     var body: some View {
         ZStack {
-            Circle()
-                .trim(from: animateStrokeStart ? 1/3 : 1/7,
-                      to: animateStrokeEnd ? 1/2 : 1)
-                .stroke(lineWidth: 4)
-                .frame(width: 100, height: 100)
-                .padding(4)
-                .foregroundColor(tunnelState.circleColor)
-                .rotationEffect(.degrees(isRotating ? 0 : 360))
-                .onAppear() {
-                    withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-                    {
-                        self.isRotating.toggle()
+            if tunnelState.isLoading {
+                Circle()
+                    .trim(from: animateStrokeStart ? 1/3 : 1/5,
+                          to: animateStrokeEnd ? 1/2 : 1)
+                    .stroke(lineWidth: 4)
+                    .frame(width: 100, height: 100)
+                    .padding(4)
+                    .foregroundColor(tunnelState.circleColor)
+                    .rotationEffect(.degrees(isRotating ? 0 : 360))
+                    .onAppear() {
+                        withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+                        {
+                            self.isRotating.toggle()
+                        }
+                        withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true))
+                        {
+                            self.animateStrokeStart.toggle()
+                        }
+                        withAnimation(Animation.linear(duration: 1).delay(1).repeatForever(autoreverses: true))
+                        {
+                            self.animateStrokeEnd.toggle()
+                        }
                     }
-                    withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true))
-                    {
-                        self.animateStrokeStart.toggle()
-                    }
-                    withAnimation(Animation.linear(duration: 1).delay(1).repeatForever(autoreverses: true))
-                    {
-                        self.animateStrokeEnd.toggle()
-                    }
-                }
-                .zIndex(10)
-                .opacity(tunnelState.isLoading ? 1 : 0)
-            Circle()
-                .stroke(lineWidth: 4)
-                .frame(width: 100, height: 100)
-                .padding(4)
-                .foregroundColor(tunnelState.circleColor)
-                .zIndex(10)
-                .opacity(tunnelState.isLoading ? 0 : 1)
+                    .zIndex(10)
+            }
+            else {
+                Circle()
+                    .stroke(lineWidth: 4)
+                    .frame(width: 100, height: 100)
+                    .padding(4)
+                    .foregroundColor(tunnelState.circleColor)
+                    .zIndex(10)
+            }
             Circle()
                 .fill()
                 .frame(width: 100, height: 100)

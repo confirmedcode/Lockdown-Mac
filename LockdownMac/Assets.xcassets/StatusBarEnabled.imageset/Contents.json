@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "ldlocked-2.png",
+      "filename" : "0locksmall.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "ldlocked.png",
+      "filename" : "0lockbig.png",
       "scale" : "2x"
     }
   ],

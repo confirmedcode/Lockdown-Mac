@@ -153,6 +153,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if self.popover.isShown == false {
+            self.togglePopover(nil)
+        }
+        return true
+    }
+    
     @objc func turnAllOff(completion: @escaping () -> Void = {}) {
         setUserWantsFirewallEnabled(false)
         setUserWantsVPNEnabled(false)

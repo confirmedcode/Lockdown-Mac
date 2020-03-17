@@ -99,7 +99,7 @@ struct EmailLoginView: View {
                 .padding(8)
             }
         }
-        .frame(width: 300, height: 285)
+        .frame(width: 300, height: 310)
         .padding(10)
     }
     
