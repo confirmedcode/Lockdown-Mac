@@ -52,6 +52,9 @@ func setupLocalLogger() {
     DDLogInfo("Lockdown Mac: v" + nsObject!)
     DDLogInfo("Mac version: \(systemVersion)")
     DDLogInfo("Device model: \(modelIdentifier())")
+    DDLogInfo("WantsFirewallOn: \(getUserWantsFirewallEnabled())")
+    DDLogInfo("WantsSecureTunnelOn: \(getUserWantsVPNEnabled())")
+    DDLogInfo("Region: \(getSavedVPNRegion().serverPrefix)")
     DDLogInfo("************************************************")
 }
 

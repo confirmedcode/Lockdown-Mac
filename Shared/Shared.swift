@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import KeychainAccess
 import CocoaLumberjackSwift
+import ServiceManagement
 
 let defaults = UserDefaults(suiteName: "V8J3Z26F6Z.group.confirmed.lockdownMac")!
 let keychain = Keychain(service: "com.confirmed.lockdownMac").synchronizable(true)
@@ -17,6 +18,21 @@ let keychain = Keychain(service: "com.confirmed.lockdownMac").synchronizable(tru
 extension Notification.Name {
     static let togglePopover = Notification.Name("togglePopover")
     static let togglePopoverOn = Notification.Name("togglePopoverOn")
+    static let togglePopoverOff = Notification.Name("togglePopoverOff")
+    static let killLauncher = Notification.Name("killLauncher")
+}
+
+let launcherAppId = "com.confirmed.LockdownMacLauncher"
+let kOpenOnStartup = "kOpenOnStartup"
+
+// SwiftUI <-> UserDefaults
+class UserDefaultsManager: ObservableObject {
+    @Published var openOnStartup: Bool = defaults.bool(forKey: kOpenOnStartup) {
+        didSet {
+            SMLoginItemSetEnabled(launcherAppId as CFString, self.openOnStartup)
+            defaults.set(self.openOnStartup, forKey: kOpenOnStartup)
+        }
+    }
 }
 
 // MARK: - User Interface (UI)
@@ -86,6 +102,27 @@ extension String: Error { // Error makes it easy to throw errors as one-liners
         return nil
     }
     
+}
+
+
+// MARK: - Saved enabled state before logout/shutdown/closing app
+let kSavedUserWantsFirewallEnabled = "saved_user_wants_firewall_enabled"
+let kSavedUserWantsVPNEnabled = "saved_user_wants_vpn_enabled"
+
+func setSavedUserWantsFirewallEnabled(_ enabled: Bool) {
+    defaults.set(enabled, forKey: kSavedUserWantsFirewallEnabled)
+}
+
+func getSavedUserWantsFirewallEnabled() -> Bool {
+    return defaults.bool(forKey: kSavedUserWantsFirewallEnabled)
+}
+
+func setSavedUserWantsVPNEnabled(_ enabled: Bool) {
+    defaults.set(enabled, forKey: kSavedUserWantsVPNEnabled)
+}
+
+func getSavedUserWantsVPNEnabled() -> Bool {
+    return defaults.bool(forKey: kSavedUserWantsVPNEnabled)
 }
 
 // MARK: - User wants Firewall/VPN Enabled

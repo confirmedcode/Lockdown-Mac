@@ -7,10 +7,14 @@
 
 import SwiftUI
 import CocoaLumberjackSwift
+import Foundation
 
 var contentView: ContentView?
 
 let fileLogger: DDFileLogger = DDFileLogger()
+
+let kDoNotShowQuitConfirmation = "kDoNotShowQuitConfirmation"
+var isAutolaunch = false
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -50,6 +54,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          }
     }
     
+    @objc func togglePopoverOff(_ sender: AnyObject?) {
+        self.popover.performClose(nil)
+    }
+    
     func refreshIconState() {
         if (FirewallController.shared.status() == .connected || VPNController.shared.status() == .connected) {
             self.statusBarItem.button?.image = statusBarIconEnabled
@@ -74,6 +82,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         DDLogInfo("App Launched")
         
+        // Kill Launcher if running
+        if let mainBundleId = Bundle.main.bundleIdentifier {
+            let runningApps = NSWorkspace.shared.runningApplications
+            let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
+            if isRunning {
+                isAutolaunch = true
+                DistributedNotificationCenter.default().post(name: .killLauncher, object: mainBundleId)
+            }
+        }
+        
         setupFirewallDefaultBlockLists()
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
@@ -89,6 +107,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(togglePopover(_:)), name: .togglePopover, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(togglePopoverOn(_:)), name: .togglePopoverOn, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(togglePopoverOff(_:)), name: .togglePopoverOff, object: nil)
         
         self.statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
         self.statusBarItem.button?.action = #selector(togglePopover(_:))
@@ -129,25 +148,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let desc = NSAppleEventManager.shared().currentAppleEvent
         switch desc?.attributeDescriptor(forKeyword: kAEQuitReason)?.enumCodeValue {
             case kAELogOut, kAEReallyLogOut, kAEShowRestartDialog, kAERestart, kAEShowShutdownDialog, kAEShutDown:
-                turnAllOff(completion: {
+                turnAllOffBeforeLogOutAndSaveState(completion: {
                     NSApplication.shared.reply(toApplicationShouldTerminate: true)
                 })
                 return .terminateLater
             default:
-                let alert = NSAlert()
-                alert.messageText = "Are you sure you want to quit?"
-                alert.informativeText = "This deactivates the Firewall and Secure Tunnel and quits the app entirely."
-                alert.alertStyle = .warning
-                alert.addButton(withTitle: "Deactivate & Quit")
-                alert.addButton(withTitle: "Cancel")
-                if alert.runModal() == .alertFirstButtonReturn {
-                    turnAllOff(completion: {
+                if (defaults.bool(forKey: kDoNotShowQuitConfirmation)) {
+                    turnAllOffBeforeLogOutAndSaveState(completion: {
                         NSApplication.shared.reply(toApplicationShouldTerminate: true)
                     })
                     return .terminateLater
                 }
                 else {
-                    return .terminateCancel
+                    let alert = NSAlert()
+                    alert.messageText = "Are you sure you want to quit?"
+                    alert.informativeText = "This deactivates the Firewall and Secure Tunnel and quits the app entirely."
+                    alert.showsSuppressionButton = true
+                    alert.suppressionButton?.title = "Do not show this dialog again"
+                    alert.alertStyle = .warning
+                    alert.addButton(withTitle: "Deactivate & Quit")
+                    alert.addButton(withTitle: "Cancel")
+                    if alert.runModal() == .alertFirstButtonReturn {
+                        if (alert.suppressionButton?.state == NSControl.StateValue.on) {
+                            defaults.set(true, forKey: kDoNotShowQuitConfirmation)
+                        }
+                        turnAllOffBeforeLogOutAndSaveState(completion: {
+                            NSApplication.shared.reply(toApplicationShouldTerminate: true)
+                        })
+                        return .terminateLater
+                    }
+                    else {
+                        return .terminateCancel
+                    }
                 }
         }
         
@@ -160,7 +192,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    @objc func turnAllOff(completion: @escaping () -> Void = {}) {
+    @objc func turnAllOffBeforeLogOutAndSaveState(completion: @escaping () -> Void = {}) {
+        setSavedUserWantsFirewallEnabled(getUserWantsFirewallEnabled())
+        setSavedUserWantsVPNEnabled(getUserWantsVPNEnabled())
         setUserWantsFirewallEnabled(false)
         setUserWantsVPNEnabled(false)
         FirewallController.shared.deactivateIfEnabled(completion: { _ in

@@ -18,6 +18,7 @@ let kHasAgreedToFirewallPrivacyPolicy = "kHasAgreedToFirewallPrivacyPolicy"
 let kHasSeenIKEv2Dialog = "kHasSeenIKEv2Dialog"
 
 var toggleVPNinProgress: Bool = false
+var isFirstLaunch: Bool = true // first time onAppear shows should activate vpn/firewall if it was activated last time
 
 struct ContentView: View {
     
@@ -186,7 +187,6 @@ struct ContentView: View {
             .background(Color.panelBackground)
             .cornerRadius(8)
             
-            
             VStack {
                 Text("Secure Tunnel VPN")
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 23, maxHeight: 23, alignment: .leading)
@@ -315,7 +315,35 @@ struct ContentView: View {
             }
             refreshFirewallStatus()
             refreshVPNStatus()
-            self.ensureLoginAndSubscriptionValid()
+            
+            // only run this one time because we don't want unnecessary reconnects
+            if (isFirstLaunch) {
+                // reload saved activated state
+                // only firewall
+                if (getSavedUserWantsFirewallEnabled() == true && getSavedUserWantsVPNEnabled() == false) {
+                    self.toggleFirewall(hideAfterActivating: isAutolaunch) // hide after activating if it's autolaunch
+                }
+                // only VPN
+                else if (getSavedUserWantsFirewallEnabled() == false && getSavedUserWantsVPNEnabled() == true) {
+                    self.toggleVPN(hideAfterActivating: isAutolaunch)
+                }
+                // both
+                else if (getSavedUserWantsFirewallEnabled() == true && getSavedUserWantsVPNEnabled() == true) {
+                    setUserWantsFirewallEnabled(true)
+                    self.toggleVPN(hideAfterActivating: isAutolaunch)
+                }
+                // neither
+                else {
+                    if (isAutolaunch) {
+                        // give the window time to load
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
+                        }
+                    }
+                }
+                isAutolaunch = false
+                isFirstLaunch = false
+            }
         }
         .alert(isPresented: $showingPrivacyPolicyAlert) {
             Alert(title: Text("Your Privacy Comes First"), message: Text("Lockdown's Privacy Policy is simple:\n\nEverything Lockdown Firewall does stays on your device, and what you see is what you get — nothing more or less — because that's the way it should be.\n\nFor more details, visit https://lockdownhq.com/privacy\n\nClick 'Agree' to continue."), primaryButton: .default(Text("Agree")) {
@@ -327,48 +355,8 @@ struct ContentView: View {
         }
      
     }
-    
-    func ensureLoginAndSubscriptionValid() {
-        DDLogInfo("ensureLoginAndSubscriptionValid")
-        if (getUserWantsVPNEnabled() && getAPICredentials() != nil) {
-            firstly {
-                try Client.signInWithEmail()
-            }
-            .then { (signin: SignIn) -> Promise<GetKey> in
-                try Client.getKey()
-            }
-            .done { (getKey: GetKey) in
-                // nothing to do
-            }
-            .catch { error in
-                // only catch bad subscription errors here
-                if let apiError = error as? ApiError {
-                    switch apiError.code {
-                    case kApiCodeIncorrectLogin:
-                        VPNController.shared.setEnabled(false)
-                        self.errorTitle = "Incorrect Login"
-                        self.errorMessage = "Your saved login credentials are incorrect. Did you change your password recently? Please try signing in again."
-                        clearAPICredentials()
-                        self.showError = true
-                    case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                        VPNController.shared.setEnabled(false)
-                        self.errorTitle = "No Active Subscription"
-                        self.errorMessage = "Check that you are subscribed to Lockdown Secure Tunnel on your iPhone or iPad and that it's connected with the account: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")"
-                        self.showError = true
-                    case kApiCodeMobileSubscriptionOnly:
-                        VPNController.shared.setEnabled(false)
-                        self.errorTitle = "Upgrade Subscription"
-                        self.errorMessage = "Your Secure Tunnel subscription on the account \((getAPICredentials() != nil) ? getAPICredentials()!.email : "") is only valid for iPhone and iPad.\n\nUpgrade to a Pro subscription to enable Mac:\n\n1) Open Settings app\n2) Tap [Your Name]\n3) Tap Subscriptions\n4) Tap Lockdown\n5) Choose a monthly/annual Pro plan\n6) Open Lockdown on iPhone/iPad\n7) Turn the Secure Tunnel Off, Then On\n\nThis process syncs your subscription between Lockdown Mac and iOS. For any questions, email support at team@lockdownhq.com."
-                        self.showError = true
-                    default:
-                        DDLogInfo("nothing to do here")
-                    }
-                }
-            }
-        }
-    }
 
-    func toggleFirewall() {
+    func toggleFirewall(hideAfterActivating: Bool = false) {
         // flip the user preference
         let newFirewallStatus = !getUserWantsFirewallEnabled()
         setUserWantsFirewallEnabled(newFirewallStatus)
@@ -381,12 +369,17 @@ struct ContentView: View {
         else {
             FirewallController.shared.setEnabled(newFirewallStatus, completion: {
                 success in
-                NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+                if (hideAfterActivating) {
+                    NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
+                }
+                else {
+                    NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+                }
             })
         }
     }
     
-    func toggleVPN() {
+    func toggleVPN(hideAfterActivating: Bool = false) {
         // don't allow toggling VPN while toggling is already in progress
         toggleVPNinProgress = true
         // flip the user preference
@@ -425,7 +418,12 @@ struct ContentView: View {
                     
                     VPNController.shared.setEnabled(true, completion: {
                         success in
-                        NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+                        if (hideAfterActivating) {
+                            NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
+                        }
+                        else {
+                            NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+                        }
                     })
                     toggleVPNinProgress = false
                 }

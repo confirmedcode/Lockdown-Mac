@@ -46,6 +46,11 @@
 		3D8ED4B92399EB1E003F487E /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ED4B82399EB1E003F487E /* Shared.swift */; };
 		3D8ED4BA239A221D003F487E /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ED4B82399EB1E003F487E /* Shared.swift */; };
 		3D8ED4BC239A2322003F487E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ED4BB239A2322003F487E /* CloudKit.framework */; };
+		3D929E852421534D00BF397F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D929E842421534D00BF397F /* AppDelegate.swift */; };
+		3D929E892421534F00BF397F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D929E882421534F00BF397F /* Assets.xcassets */; };
+		3D929E8C2421534F00BF397F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D929E8A2421534F00BF397F /* Main.storyboard */; };
+		3D929E952421543100BF397F /* LockdownMacLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D929E822421534D00BF397F /* LockdownMacLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3D929E972421544300BF397F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D929E962421544200BF397F /* ServiceManagement.framework */; };
 		3D96CD1023984C48007F5C3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD0F23984C48007F5C3C /* ContentView.swift */; };
 		3D96CD1223986232007F5C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD11239861D7007F5C3C /* Main.storyboard */; };
 		3D96CD6F239892EE007F5C3C /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD66239892ED007F5C3C /* email_opens.txt */; };
@@ -89,6 +94,16 @@
 				3D5F3EE4237E347B00E0AC34 /* NEKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D929E942421541E00BF397F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				3D929E952421543100BF397F /* LockdownMacLauncher.app in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1BA1EB92072C05A00DADDEC /* Embed App Extensions */ = {
@@ -136,6 +151,13 @@
 		3D8ED4B42399EA5A003F487E /* DomainsModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsModalView.swift; sourceTree = "<group>"; };
 		3D8ED4B82399EB1E003F487E /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		3D8ED4BB239A2322003F487E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		3D929E822421534D00BF397F /* LockdownMacLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LockdownMacLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D929E842421534D00BF397F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3D929E882421534F00BF397F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D929E8B2421534F00BF397F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3D929E8D2421534F00BF397F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D929E8E2421534F00BF397F /* LockdownMacLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdownMacLauncher.entitlements; sourceTree = "<group>"; };
+		3D929E962421544200BF397F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3D96CD0F23984C48007F5C3C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D96CD11239861D7007F5C3C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3D96CD66239892ED007F5C3C /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
@@ -181,6 +203,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3D929E7F2421534D00BF397F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A19192101F44E8390071FF62 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,6 +219,7 @@
 				3D31C17A23D00AF10039F0D7 /* PromiseKit in Frameworks */,
 				A1D1F84720C1B11900CC5B02 /* CocoaLumberjack.framework in Frameworks */,
 				A1D1F84820C1B11900CC5B02 /* CocoaLumberjackSwift.framework in Frameworks */,
+				3D929E972421544300BF397F /* ServiceManagement.framework in Frameworks */,
 				A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */,
 				3D82878B23D0064300DFFFC2 /* KeychainAccess in Frameworks */,
 			);
@@ -221,6 +251,18 @@
 				3D5F3EDC237E26BA00E0AC34 /* Lockdown_Mac_Tunnel.entitlements */,
 			);
 			path = "Lockdown Mac Tunnel";
+			sourceTree = "<group>";
+		};
+		3D929E832421534D00BF397F /* LockdownMacLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				3D929E842421534D00BF397F /* AppDelegate.swift */,
+				3D929E882421534F00BF397F /* Assets.xcassets */,
+				3D929E8A2421534F00BF397F /* Main.storyboard */,
+				3D929E8D2421534F00BF397F /* Info.plist */,
+				3D929E8E2421534F00BF397F /* LockdownMacLauncher.entitlements */,
+			);
+			path = LockdownMacLauncher;
 			sourceTree = "<group>";
 		};
 		3D96CD1323986BBA007F5C3C /* Fonts */ = {
@@ -266,6 +308,7 @@
 				A1769104207FA2F600CAF05C /* LICENSE.md */,
 				3D96CD65239892D9007F5C3C /* Block Lists */,
 				3D96CD1323986BBA007F5C3C /* Fonts */,
+				3D929E832421534D00BF397F /* LockdownMacLauncher */,
 				A19192141F44E8390071FF62 /* Products */,
 				A19192431F45249C0071FF62 /* Frameworks */,
 			);
@@ -276,6 +319,7 @@
 			children = (
 				A19192131F44E8390071FF62 /* Lockdown.app */,
 				3D5F3ED7237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex */,
+				3D929E822421534D00BF397F /* LockdownMacLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,6 +349,7 @@
 		A19192431F45249C0071FF62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D929E962421544200BF397F /* ServiceManagement.framework */,
 				3D8ED4BB239A2322003F487E /* CloudKit.framework */,
 				A1769109207FCD1F00CAF05C /* NetworkExtension.framework */,
 				A1BA1EC32072C15E00DADDEC /* CocoaAsyncSocket.framework */,
@@ -346,6 +391,25 @@
 			productReference = 3D5F3ED7237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		3D929E812421534D00BF397F /* LockdownMacLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D929E912421534F00BF397F /* Build configuration list for PBXNativeTarget "LockdownMacLauncher" */;
+			buildPhases = (
+				3D929E7E2421534D00BF397F /* Sources */,
+				3D929E7F2421534D00BF397F /* Frameworks */,
+				3D929E802421534D00BF397F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LockdownMacLauncher;
+			packageProductDependencies = (
+			);
+			productName = LockdownMacLauncher;
+			productReference = 3D929E822421534D00BF397F /* LockdownMacLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A19192121F44E8390071FF62 /* Lockdown */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A19192381F44E8390071FF62 /* Build configuration list for PBXNativeTarget "Lockdown" */;
@@ -355,6 +419,7 @@
 				A19192111F44E8390071FF62 /* Resources */,
 				A1BA1EB92072C05A00DADDEC /* Embed App Extensions */,
 				A1D1F84920C1B13E00CC5B02 /* ShellScript */,
+				3D929E942421541E00BF397F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -377,7 +442,7 @@
 		A191920B1F44E8390071FF62 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Confirmed, Inc.";
 				TargetAttributes = {
@@ -385,6 +450,9 @@
 						CreatedOnToolsVersion = 11.2;
 						DevelopmentTeam = V8J3Z26F6Z;
 						ProvisioningStyle = Automatic;
+					};
+					3D929E812421534D00BF397F = {
+						CreatedOnToolsVersion = 11.3.1;
 					};
 					A19192121F44E8390071FF62 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -442,6 +510,7 @@
 			targets = (
 				A19192121F44E8390071FF62 /* Lockdown */,
 				3D5F3ED6237E26BA00E0AC34 /* Lockdown Mac Tunnel */,
+				3D929E812421534D00BF397F /* LockdownMacLauncher */,
 			);
 		};
 /* End PBXProject section */
@@ -451,6 +520,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D929E802421534D00BF397F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D929E892421534F00BF397F /* Assets.xcassets in Resources */,
+				3D929E8C2421534F00BF397F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +597,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3D929E7E2421534D00BF397F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D929E852421534D00BF397F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A191920F1F44E8390071FF62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -555,6 +641,17 @@
 			targetProxy = 3D5F3EDD237E26BA00E0AC34 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D929E8A2421534F00BF397F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D929E8B2421534F00BF397F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3D5F3EE1237E26BA00E0AC34 /* Debug */ = {
@@ -627,6 +724,67 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		3D929E8F2421534F00BF397F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LockdownMacLauncher/LockdownMacLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LockdownMacLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3D929E902421534F00BF397F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LockdownMacLauncher/LockdownMacLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LockdownMacLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.2;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -811,6 +969,15 @@
 			buildConfigurations = (
 				3D5F3EE1237E26BA00E0AC34 /* Debug */,
 				3D5F3EE2237E26BA00E0AC34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D929E912421534F00BF397F /* Build configuration list for PBXNativeTarget "LockdownMacLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D929E8F2421534F00BF397F /* Debug */,
+				3D929E902421534F00BF397F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

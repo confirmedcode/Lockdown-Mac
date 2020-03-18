@@ -12,8 +12,8 @@ import CocoaLumberjackSwift
 
 struct MenuView: View {
     
+    @ObservedObject var userDefaultsManager = UserDefaultsManager()
     @State var refreshViewValue = 0
-    
     @State private var showEmailLogin: Bool = false
     
     var body: some View {
@@ -48,73 +48,104 @@ struct MenuView: View {
                 }
                 .buttonStyle(BlueButtonStyle())
                 .cornerRadius(8)
-                .padding(.vertical, 6)
+                .padding(.vertical, 8)
                 .padding(.horizontal, 6)
             }
             .background(Color.mainBackground)
             .cornerRadius(8)
             .frame(minWidth: 0, maxWidth: .infinity)
             
-            Button(
-                action: {
-                    let url = URL(string: "https://lockdownhq.com/privacy")!
-                    if NSWorkspace.shared.open(url) {
-                        DDLogInfo("privacy opened")
-                    }
-            }) {
-                Text("Privacy Policy")
-                    .font(cFontSubtitle2)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
-            }
-            .buttonStyle(BlueButtonStyle())
-            .cornerRadius(8)
-            .padding(.top, 8)
+            Divider()
+                .padding(.top, 6)
             
-            Button(
-                action: {
-                    let url = URL(string: "https://lockdownhq.com")!
-                    if NSWorkspace.shared.open(url) {
-                        DDLogInfo("website opened")
-                    }
-            }) {
-                Text("Website")
-                    .font(cFontSubtitle2)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
+            Toggle(isOn: self.$userDefaultsManager.openOnStartup) {
+                Text("Launch On Login")
             }
-            .buttonStyle(BlueButtonStyle())
+            .toggleStyle(LaunchOnLoginToggleStyle())
+            .background(Color.mainBackground)
+            .frame(minWidth: 200, maxWidth: .infinity, alignment: .leading)
             .cornerRadius(8)
-            .padding(.top, 8)
+            .padding(.top, 4)
             
-            Button(
-                action: {
-                    let sharingService = NSSharingService(named: NSSharingService.Name.composeEmail)
-                    sharingService?.recipients = ["team@lockdownhq.com"]
-                    sharingService?.subject = "Lockdown Feedback (macOS)"
-                    
-                    var items: [Any] = ["Hey Lockdown Team, \nI have a question, issue, or suggestion - \n\n\n\n\n"]
-                    
-                    let uuid = NSUUID().uuidString
-                    if let tempDir = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(uuid) {
-                        let fileManager = FileManager()
-                        try? fileManager.createDirectory(at: tempDir, withIntermediateDirectories: true, attributes: nil)
-                        let tempFile = tempDir.appendingPathComponent("LockdownLogs.log")
-                        let attachmentData = NSMutableData()
-                        for logFileData in logFileDataArray {
-                            attachmentData.append(logFileData as Data)
+            HStack {
+                Button(
+                    action: {
+                        let url = URL(string: "https://lockdownhq.com/privacy")!
+                        if NSWorkspace.shared.open(url) {
+                            DDLogInfo("privacy opened")
                         }
-                        attachmentData.write(to: tempFile, atomically: false)
-                        items.append(tempFile)
-                    }
-
-                    sharingService?.perform(withItems: items)
-            }) {
-                Text("Contact Support")
-                    .font(cFontSubtitle2)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
+                }) {
+                    Text("Privacy Policy")
+                        .font(cFontSubtitle2)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
+                }
+                .buttonStyle(BlueButtonStyle())
+                .cornerRadius(8)
+                .padding(.top, 8)
+                
+                Button(
+                    action: {
+                        let url = URL(string: "https://lockdownhq.com")!
+                        if NSWorkspace.shared.open(url) {
+                            DDLogInfo("website opened")
+                        }
+                }) {
+                    Text("Website")
+                        .font(cFontSubtitle2)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
+                }
+                .buttonStyle(BlueButtonStyle())
+                .cornerRadius(8)
+                .padding(.top, 8)
             }
-            .buttonStyle(BlueButtonStyle())
-            .cornerRadius(8)
-            .padding(.top, 8)
+            
+            HStack {
+                Button(
+                    action: {
+                        let url = URL(string: "https://lockdownhq.com/faq")!
+                        if NSWorkspace.shared.open(url) {
+                            DDLogInfo("faq opened")
+                        }
+                }) {
+                    Text("FAQs")
+                        .font(cFontSubtitle2)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
+                }
+                .buttonStyle(BlueButtonStyle())
+                .cornerRadius(8)
+                .padding(.top, 8)
+                
+                Button(
+                    action: {
+                        let sharingService = NSSharingService(named: NSSharingService.Name.composeEmail)
+                        sharingService?.recipients = ["team@lockdownhq.com"]
+                        sharingService?.subject = "Lockdown Feedback (macOS)"
+                        
+                        var items: [Any] = ["Hey Lockdown Team, \nI have a question, issue, or suggestion - \n\n\n\n\n"]
+                        
+                        let uuid = NSUUID().uuidString
+                        if let tempDir = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(uuid) {
+                            let fileManager = FileManager()
+                            try? fileManager.createDirectory(at: tempDir, withIntermediateDirectories: true, attributes: nil)
+                            let tempFile = tempDir.appendingPathComponent("LockdownLogs.log")
+                            let attachmentData = NSMutableData()
+                            for logFileData in logFileDataArray {
+                                attachmentData.append(logFileData as Data)
+                            }
+                            attachmentData.write(to: tempFile, atomically: false)
+                            items.append(tempFile)
+                        }
+
+                        sharingService?.perform(withItems: items)
+                }) {
+                    Text("Support")
+                        .font(cFontSubtitle2)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
+                }
+                .buttonStyle(BlueButtonStyle())
+                .cornerRadius(8)
+                .padding(.top, 8)
+            }
         
             Button(
                 action: {
@@ -131,7 +162,7 @@ struct MenuView: View {
             Text("v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
             .font(cFontSmall)
             .foregroundColor(Color.gray)
-            .padding(.top, 8)
+            .padding(.top, 7)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
             .popover(isPresented: self.$showEmailLogin) {
                 EmailLoginView(successCallback: {
@@ -142,7 +173,7 @@ struct MenuView: View {
             
         }
         .padding(10)
-        .frame(width: 290, height: 270)
+        .frame(width: 290, height: 275)
         
     }
     
@@ -153,5 +184,31 @@ struct MenuView_Previews: PreviewProvider {
         Group {
             MenuView()
         }
+    }
+}
+
+struct LaunchOnLoginToggleStyle: ToggleStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        HStack {
+            Text("Launch On Login")
+            .font(cFontSubtitle2)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
+            Spacer()
+            Button(action: { configuration.isOn.toggle() } )
+            {
+                RoundedRectangle(cornerRadius: 16, style: .circular)
+                    .fill(configuration.isOn ? Color.confirmedBlue : Color.lightGray)
+                    .frame(width: 50, height: 29)
+                    .overlay(
+                        Circle()
+                            .fill(Color.white)
+                            .shadow(radius: 1, x: 0, y: 1)
+                            .padding(1.5)
+                            .offset(x: configuration.isOn ? 10 : -10))
+                    .animation(Animation.easeInOut(duration: 0.1))
+            }
+            .buttonStyle(BlankButtonStyle())
+        }
+        .padding(.horizontal)
     }
 }
