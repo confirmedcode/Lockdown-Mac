@@ -318,31 +318,7 @@ struct ContentView: View {
             
             // only run this one time because we don't want unnecessary reconnects
             if (isFirstLaunch) {
-                // reload saved activated state
-                // only firewall
-                if (getSavedUserWantsFirewallEnabled() == true && getSavedUserWantsVPNEnabled() == false) {
-                    self.toggleFirewall(hideAfterActivating: isAutolaunch) // hide after activating if it's autolaunch
-                }
-                // only VPN
-                else if (getSavedUserWantsFirewallEnabled() == false && getSavedUserWantsVPNEnabled() == true) {
-                    self.toggleVPN(hideAfterActivating: isAutolaunch)
-                }
-                // both
-                else if (getSavedUserWantsFirewallEnabled() == true && getSavedUserWantsVPNEnabled() == true) {
-                    setUserWantsFirewallEnabled(true)
-                    self.toggleVPN(hideAfterActivating: isAutolaunch)
-                }
-                // neither
-                else {
-                    if (isAutolaunch) {
-                        // give the window time to load
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
-                        }
-                    }
-                }
-                isAutolaunch = false
-                isFirstLaunch = false
+                self.reinstateActivatedStates()
             }
         }
         .alert(isPresented: $showingPrivacyPolicyAlert) {
@@ -354,6 +330,34 @@ struct ContentView: View {
                 })
         }
      
+    }
+    
+    func reinstateActivatedStates() {
+        // reload saved activated state
+        // only firewall
+        if (getSavedUserWantsFirewallEnabled() == true && getSavedUserWantsVPNEnabled() == false) {
+            self.toggleFirewall(hideAfterActivating: isAutolaunch) // hide after activating if it's autolaunch
+        }
+        // only VPN
+        else if (getSavedUserWantsFirewallEnabled() == false && getSavedUserWantsVPNEnabled() == true) {
+            self.toggleVPN(hideAfterActivating: isAutolaunch)
+        }
+        // both
+        else if (getSavedUserWantsFirewallEnabled() == true && getSavedUserWantsVPNEnabled() == true) {
+            setUserWantsFirewallEnabled(true)
+            self.toggleVPN(hideAfterActivating: isAutolaunch)
+        }
+        // neither
+        else {
+            if (isAutolaunch) {
+                // give the window time to load
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
+                }
+            }
+        }
+        isAutolaunch = false
+        isFirstLaunch = false
     }
 
     func toggleFirewall(hideAfterActivating: Bool = false) {

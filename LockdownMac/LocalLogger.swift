@@ -10,6 +10,8 @@ import CocoaLumberjackSwift
 
 var logFileDataArray: [NSData] {
     get {
+        DDLogInfo("WantsFirewallOn: \(getUserWantsFirewallEnabled())")
+        DDLogInfo("WantsSecureTunnelOn: \(getUserWantsVPNEnabled())")
         let logFilePaths = fileLogger.logFileManager.sortedLogFilePaths as [String]
         var logFileDataArray = [NSData]()
         for logFilePath in logFilePaths {
@@ -35,9 +37,11 @@ func modelIdentifier() -> String? {
 }
 
 func setupLocalLogger() {
-    DDLog.add(DDTTYLogger.sharedInstance)
+    if let s = DDTTYLogger.sharedInstance {
+        DDLog.add(s)
+        s.logFormatter = LogFormatter()
+    }
     DDLog.add(DDOSLogger.sharedInstance)
-    DDTTYLogger.sharedInstance.logFormatter = LogFormatter()
     DDOSLogger.sharedInstance.logFormatter = LogFormatter()
     
     fileLogger.rollingFrequency = TimeInterval(60*60*24)  // 24 hours
@@ -52,8 +56,6 @@ func setupLocalLogger() {
     DDLogInfo("Lockdown Mac: v" + nsObject!)
     DDLogInfo("Mac version: \(systemVersion)")
     DDLogInfo("Device model: \(modelIdentifier())")
-    DDLogInfo("WantsFirewallOn: \(getUserWantsFirewallEnabled())")
-    DDLogInfo("WantsSecureTunnelOn: \(getUserWantsVPNEnabled())")
     DDLogInfo("Region: \(getSavedVPNRegion().serverPrefix)")
     DDLogInfo("************************************************")
 }

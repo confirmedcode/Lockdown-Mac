@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3D1AF4EB23D833160097341B /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AF4EA23D833160097341B /* LoadingCircle.swift */; };
-		3D31C17323D006860039F0D7 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3D31C17223D006860039F0D7 /* KeychainAccess */; };
 		3D31C17523D008980039F0D7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D31C17423D008980039F0D7 /* Environment.swift */; };
 		3D31C17623D008980039F0D7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D31C17423D008980039F0D7 /* Environment.swift */; };
 		3D31C17A23D00AF10039F0D7 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D31C17923D00AF10039F0D7 /* PromiseKit */; };
@@ -65,6 +64,7 @@
 		3D96CD8223989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
 		3D96CD8323989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
 		3DC605E623EE3BD900B30DB3 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */; };
+		3DD1907D2436B81300DFC597 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD1907C2436B81300DFC597 /* KeychainAccess */; };
 		A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1769109207FCD1F00CAF05C /* NetworkExtension.framework */; };
 		A153438920E6C5DD002762B6 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BA1EBD2072C15D00DADDEC /* NEKit.framework */; };
 		A1769105207FA2F600CAF05C /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = A1769104207FA2F600CAF05C /* LICENSE.md */; };
@@ -196,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D31C17323D006860039F0D7 /* KeychainAccess in Frameworks */,
+				3DD1907D2436B81300DFC597 /* KeychainAccess in Frameworks */,
 				3D8ED4BC239A2322003F487E /* CloudKit.framework in Frameworks */,
 				3D5F3EE3237E347B00E0AC34 /* NEKit.framework in Frameworks */,
 				3D8A1F51237F74B30019AAE2 /* NetworkExtension.framework in Frameworks */,
@@ -385,7 +385,7 @@
 			);
 			name = "Lockdown Mac Tunnel";
 			packageProductDependencies = (
-				3D31C17223D006860039F0D7 /* KeychainAccess */,
+				3DD1907C2436B81300DFC597 /* KeychainAccess */,
 			);
 			productName = "Lockdown Mac Tunnel";
 			productReference = 3D5F3ED7237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex */;
@@ -665,7 +665,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -680,7 +680,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
@@ -702,7 +702,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -717,7 +717,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -740,6 +740,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -748,7 +749,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
@@ -771,6 +772,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -779,7 +781,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -819,6 +821,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -876,6 +879,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC = 1;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -905,7 +909,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 17;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -919,7 +923,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -939,7 +943,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -952,7 +956,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1030,11 +1034,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3D31C17223D006860039F0D7 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D82878923D0064300DFFFC2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
 		3D31C17923D00AF10039F0D7 /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3D31C17823D00AF10039F0D7 /* XCRemoteSwiftPackageReference "PromiseKit" */;
@@ -1046,6 +1045,11 @@
 			productName = PMKFoundation;
 		};
 		3D82878A23D0064300DFFFC2 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D82878923D0064300DFFFC2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		3DD1907C2436B81300DFC597 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3D82878923D0064300DFFFC2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;

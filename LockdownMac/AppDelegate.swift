@@ -66,6 +66,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.statusBarItem.button?.image = statusBarIconDisabled
         }
     }
+    
+    @objc func becameInactive() {
+        print("USERSWITCH: switched OUT from fast user")
+        turnAllOffBeforeLogOutAndSaveState(completion: {
+        })
+    }
+    
+    @objc func becameActive() {
+        print("USERSWITCH: switched IN from fast user")
+        FirewallController.shared.deactivateIfEnabled(completion: { _ in
+            VPNController.shared.deactivateIfEnabled(completion: { _ in
+                //DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                //    print("USERSWITCH: reinstating")
+                //    contentView?.reinstateActivatedStates()
+                //}
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, qos: .userInteractive, flags: .enforceQoS) {
+                    print("USERSWITCH: reinstating")
+                    contentView?.reinstateActivatedStates()
+                }
+            })
+        })
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -91,6 +113,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 DistributedNotificationCenter.default().post(name: .killLauncher, object: mainBundleId)
             }
         }
+        
+        // Fast User Switching OUT
+        NSWorkspace.shared.notificationCenter.addObserver(
+            self,
+            selector: #selector(becameInactive),
+            name: NSWorkspace.sessionDidResignActiveNotification,
+            object: nil
+        )
+
+        // Fast User Switching IN
+        NSWorkspace.shared.notificationCenter.addObserver(
+            self,
+            selector: #selector(becameActive),
+            name: NSWorkspace.sessionDidBecomeActiveNotification,
+            object: nil
+        )
         
         setupFirewallDefaultBlockLists()
         
@@ -123,13 +161,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Need this check otherwise the privacy policy dialog shows up twice
         if (defaults.bool(forKey: kHasAgreedToFirewallPrivacyPolicy) == true) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, qos: .userInteractive, flags: .enforceQoS) {
                 self.refreshIconState()
                 refreshVPNStatus()
                 refreshFirewallStatus()
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, qos: .userInteractive, flags: .enforceQoS) {
                 self.refreshIconState()
                 refreshVPNStatus()
                 refreshFirewallStatus()
