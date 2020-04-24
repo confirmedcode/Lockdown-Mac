@@ -11,6 +11,7 @@ import SwiftUI
 import KeychainAccess
 import CocoaLumberjackSwift
 import ServiceManagement
+import SystemConfiguration
 
 let defaults = UserDefaults(suiteName: "V8J3Z26F6Z.group.confirmed.lockdownMac")!
 let keychain = Keychain(service: "com.confirmed.lockdownMac").synchronizable(true)
@@ -390,4 +391,63 @@ func getSavedVPNRegion() -> VPNRegion {
 
 func setSavedVPNRegion(vpnRegion: VPNRegion) {
     defaults.set(vpnRegion.serverPrefix, forKey: kSavedVPNRegionServerPrefix)
+}
+
+
+// MARK: - System utilities
+
+func getUid() -> UInt16? {
+    var uid: uid_t = 0
+    var gid: gid_t = 0
+    if (SCDynamicStoreCopyConsoleUser(nil, &uid, &gid) != nil) {
+        DDLogInfo("GETUID: uid = \(uid)")
+        if uid > 20000 {
+            DDLogInfo("ERROR: UID too large")
+            return nil
+        }
+        return UInt16(uid)
+    } else {
+        DDLogInfo("GETUID: failed getting uid")
+        return nil
+    }
+}
+
+func isPortOpen(port: in_port_t, address: String) -> (Bool, descr: String) {
+
+    let socketFileDescriptor = socket(AF_INET, SOCK_STREAM, 0)
+    if socketFileDescriptor == -1 {
+        return (false, "SocketCreationFailed, \(descriptionOfLastError())")
+    }
+
+    var addr = sockaddr_in()
+    let sizeOfSockkAddr = MemoryLayout<sockaddr_in>.size
+    addr.sin_len = __uint8_t(sizeOfSockkAddr)
+    addr.sin_family = sa_family_t(AF_INET)
+    addr.sin_port = Int(OSHostByteOrder()) == OSLittleEndian ? _OSSwapInt16(port) : port
+    addr.sin_addr = in_addr(s_addr: inet_addr(address))
+    addr.sin_zero = (0, 0, 0, 0, 0, 0, 0, 0)
+    var bind_addr = sockaddr()
+    memcpy(&bind_addr, &addr, Int(sizeOfSockkAddr))
+
+    if Darwin.bind(socketFileDescriptor, &bind_addr, socklen_t(sizeOfSockkAddr)) == -1 {
+        let details = descriptionOfLastError()
+        isPortOpenRelease(socket: socketFileDescriptor)
+        return (false, "\(port), BindFailed, \(details)")
+    }
+    if listen(socketFileDescriptor, SOMAXCONN ) == -1 {
+        let details = descriptionOfLastError()
+        isPortOpenRelease(socket: socketFileDescriptor)
+        return (false, "\(port), ListenFailed, \(details)")
+    }
+    isPortOpenRelease(socket: socketFileDescriptor)
+    return (true, "\(port) is free for use")
+}
+
+func isPortOpenRelease(socket: Int32) {
+    Darwin.shutdown(socket, SHUT_RDWR)
+    close(socket)
+}
+
+func descriptionOfLastError() -> String {
+    return String.init(cString: (UnsafePointer(strerror(errno))))
 }

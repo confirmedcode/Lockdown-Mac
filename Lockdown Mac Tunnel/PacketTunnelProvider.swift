@@ -11,15 +11,35 @@ import os.log
 import CocoaLumberjackSwift
 
 var proxyServerPTP: GCDHTTPProxyServer!
+let proxyServerAddress = "127.0.0.1"
+var proxyServerPort: UInt16 = 9093
+let proxyPortBuffer: UInt16 = 6000
+let proxyPortBufferBackup: UInt16 = 7000
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
-    
-    let proxyServerPort: UInt16 = 9093
-    let proxyServerAddress = "127.0.0.1"
     
     //MARK: - OVERRIDES
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+        
+        if let uid = getUid() {
+            DDLogInfo("PROXYPORT: Trying ports")
+            if isPortOpen(port: UInt16(uid + proxyPortBuffer), address: proxyServerAddress).0 == true {
+                DDLogInfo("PROXYPORT: \(UInt16(uid + proxyPortBuffer)) not used, using it")
+                proxyServerPort = UInt16(uid + proxyPortBuffer)
+            }
+            else if isPortOpen(port: UInt16(uid + proxyPortBufferBackup), address: proxyServerAddress).0 == true {
+                DDLogInfo("PROXYPORT: Normal buffer port failed, trying backup \(UInt16(uid + proxyPortBufferBackup))")
+                DDLogInfo("PROXYPORT: \(UInt16(uid + proxyPortBufferBackup)) backup not used, using it")
+                proxyServerPort = UInt16(uid + proxyPortBufferBackup)
+            }
+            else {
+                DDLogInfo("PROXYPORT: Unable to get uid, using default \(proxyServerPort)")
+            }
+        }
+        else {
+            DDLogInfo("PROXYPORT: Unable to get uid, using default \(proxyServerPort)")
+        }
         
         deactivateProxy()
         
@@ -33,7 +53,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             }
             else {
                 os_log("Success setting Tunnel Network Settings")
-                proxyServerPTP = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+                proxyServerPTP = GCDHTTPProxyServer(address: IPAddress(fromString: proxyServerAddress), port: Port(port: proxyServerPort))
                 os_log("Starting proxy")
                 do {
                     try proxyServerPTP.start()

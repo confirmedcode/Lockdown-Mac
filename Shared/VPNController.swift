@@ -17,7 +17,9 @@ let kVPNP12Password = "rdar://12503102" // macOS requires a password here
 
 var proxyServer: GCDHTTPProxyServer!
 let vpnProxyAddress = "127.0.0.1"
-let vpnProxyPort: UInt16 = 9091
+var vpnProxyPort: UInt16 = 9091
+let vpnPortBuffer: UInt16 = 34000
+let vpnPortBufferBackup: UInt16 = 36000
 
 class VPNController: NSObject {
     
@@ -27,6 +29,26 @@ class VPNController: NSObject {
     
     private override init() {
         super.init()
+        
+        if let uid = getUid() {
+            DDLogInfo("VPNPORT: Trying ports")
+            if isPortOpen(port: UInt16(uid + vpnPortBuffer), address: vpnProxyAddress).0 == true {
+                DDLogInfo("VPNPORT: \(UInt16(uid + vpnPortBuffer)) not used, using it")
+                vpnProxyPort = UInt16(uid + vpnPortBuffer)
+            }
+            else if isPortOpen(port: UInt16(uid + vpnPortBufferBackup), address: vpnProxyAddress).0 == true {
+                DDLogInfo("VPNPORT: Normal buffer port failed, trying backup \(UInt16(uid + vpnPortBufferBackup))")
+                DDLogInfo("VPNPORT: \(UInt16(uid + vpnPortBufferBackup)) backup not used, using it")
+                vpnProxyPort = UInt16(uid + vpnPortBufferBackup)
+            }
+            else {
+                DDLogInfo("VPNPORT: Unable to get uid, using default \(vpnProxyPort)")
+            }
+        }
+        else {
+            DDLogInfo("VPNPORT: Unable to get uid, using default \(vpnProxyPort)")
+        }
+        
         manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in })
     }
     
@@ -137,6 +159,7 @@ class VPNController: NSObject {
             p.disconnectOnSleep = false
 
             if (getUserWantsFirewallEnabled() ) {
+                DDLogInfo("using vpn proxy port: \(vpnProxyPort)")
                 let proxy = NEProxySettings()
                 proxy.httpEnabled = true
                 proxy.httpServer = NEProxyServer(address: vpnProxyAddress, port: Int(vpnProxyPort))
@@ -184,6 +207,7 @@ class VPNController: NSObject {
         if (getUserWantsFirewallEnabled()) {
             DDLogInfo("activating proxy by deactivating it first if it exists")
             deactivateProxy()
+            DDLogInfo("activate vpn proxy port: \(vpnProxyPort)")
             proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: vpnProxyAddress), port: Port(port: vpnProxyPort))
             do {
                 try proxyServer.start()

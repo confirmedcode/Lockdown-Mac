@@ -68,23 +68,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func becameInactive() {
-        print("USERSWITCH: switched OUT from fast user")
+        DDLogInfo("USERSWITCH: switched OUT from fast user")
         turnAllOffBeforeLogOutAndSaveState(completion: {
         })
     }
     
     @objc func becameActive() {
-        print("USERSWITCH: switched IN from fast user")
+        DDLogInfo("USERSWITCH: switched IN from fast user")
         FirewallController.shared.deactivateIfEnabled(completion: { _ in
             VPNController.shared.deactivateIfEnabled(completion: { _ in
-                //DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                //    print("USERSWITCH: reinstating")
-                //    contentView?.reinstateActivatedStates()
-                //}
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2, qos: .userInteractive, flags: .enforceQoS) {
-                    print("USERSWITCH: reinstating")
-                    contentView?.reinstateActivatedStates()
-                }
+                DDLogInfo("USERSWITCH: reinstating")
+                contentView?.reinstateActivatedStates()
             })
         })
     }
