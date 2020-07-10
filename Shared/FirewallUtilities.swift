@@ -13,6 +13,8 @@ import NetworkExtension
 
 let kLockdownBlockedDomains = "lockdown_domains"
 let kUserBlockedDomains = "lockdown_domains_user"
+let kLockdownWhitelistedDomains = "whitelisted_domains"
+let kUserWhitelistedDomains = "whitelisted_domains_user"
 
 // MARK: - data structures
 
@@ -345,20 +347,153 @@ func getLockdownBlockLists() -> [BlockList] {
     return blockListsSorted
 }
 
-struct CustomBlockedDomain {
+struct UserBlockedDomain {
     var domain: String
     var enabled: Bool
 }
 
-func getCustomBlockedDomains() -> [CustomBlockedDomain] {
-    var blockedDomains: [CustomBlockedDomain] = []
+func getUserBlockedDomainsArray() -> [UserBlockedDomain] {
+    var blockedDomains: [UserBlockedDomain] = []
     if let bd = defaults.dictionary(forKey: kUserBlockedDomains) {
         for (domain, blocked) in bd {
             if let b = blocked as? Bool {
-                blockedDomains.append(CustomBlockedDomain(domain: domain, enabled: b))
+                blockedDomains.append(UserBlockedDomain(domain: domain, enabled: b))
             }
         }
     }
     let blockedDomainsSorted = blockedDomains.sorted { $0.domain < $1.domain }
     return blockedDomainsSorted
+}
+
+// MARK: - Whitelist Getters
+
+func getLockdownWhitelistedDomains() -> Dictionary<String, Any> {
+    if let domains = defaults.dictionary(forKey: kLockdownWhitelistedDomains) {
+        return domains
+    }
+    return Dictionary()
+}
+
+func getUserWhitelistedDomains() -> Dictionary<String, Any> {
+    if let domains = defaults.dictionary(forKey: kUserWhitelistedDomains) {
+        return domains
+    }
+    return Dictionary()
+}
+
+func getAllWhitelistedDomains() -> [String] {
+    var toReturn:[String] = [];
+    for d in getLockdownWhitelistedDomains() {
+        if (d.value as? Bool) == true {
+            toReturn.append(d.key)
+        }
+    }
+    for d in getUserWhitelistedDomains() {
+        if (d.value as? Bool) == true {
+            toReturn.append(d.key)
+        }
+    }
+    return toReturn
+}
+
+struct WhitelistedDomain {
+    var domain: String
+    var enabled: Bool
+}
+
+func getLockdownWhitelistedDomainsArray() -> [WhitelistedDomain] {
+    return getWhitelistedDomainsArray(key: kLockdownWhitelistedDomains)
+}
+
+func getUserWhitelistedDomainsArray() -> [WhitelistedDomain] {
+    return getWhitelistedDomainsArray(key: kUserWhitelistedDomains)
+}
+
+func getWhitelistedDomainsArray(key: String) -> [WhitelistedDomain] {
+    var whitelistedDomains: [WhitelistedDomain] = []
+    if let wd = defaults.dictionary(forKey: key) {
+        for (domain, whitelisted) in wd {
+            if let w = whitelisted as? Bool {
+                whitelistedDomains.append(WhitelistedDomain(domain: domain, enabled: w))
+            }
+        }
+    }
+    let whitelistedDomainsSorted = whitelistedDomains.sorted { $0.domain < $1.domain }
+    return whitelistedDomainsSorted
+}
+
+// MARK: - Whitelist Setters
+
+func setLockdownWhitelistedDomain(domain: String, enabled: Bool) {
+    var domains = getLockdownWhitelistedDomains()
+    domains[domain] = enabled
+    defaults.set(domains, forKey: kLockdownWhitelistedDomains)
+}
+
+func setUserWhitelistedDomain(domain: String, enabled: Bool) {
+    var domains = getUserWhitelistedDomains()
+    domains[domain] = enabled
+    defaults.set(domains, forKey: kUserWhitelistedDomains)
+}
+
+func deleteUserWhitelistedDomain(domain: String) {
+    var domains = getUserWhitelistedDomains()
+    domains[domain] = nil
+    defaults.set(domains, forKey: kUserWhitelistedDomains)
+}
+
+func addUserWhitelistedDomain(domain: String) {
+    var domains = getUserWhitelistedDomains()
+    domains[domain] = true
+    defaults.set(domains, forKey: kUserWhitelistedDomains)
+}
+
+func setupLockdownWhitelistedDomains() {
+    addLockdownWhitelistedDomainIfNotExists(domain: "api.twitter.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "apple.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "apple.news")
+    addLockdownWhitelistedDomainIfNotExists(domain: "apple-cloudkit.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "bamgrid.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "cdn-apple.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "confirmedvpn.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "creditkarma.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "digicert.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "disney-plus.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "disneyplus.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "firstdata.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "go.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "hbc.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "hbo.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "hbomax.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "houzz.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "hulu.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "huluim.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "icloud-content.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "icloud.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "letsencrypt.org")
+    addLockdownWhitelistedDomainIfNotExists(domain: "lowes.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "marcopolo.me")
+    addLockdownWhitelistedDomainIfNotExists(domain: "mobile.twitter.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "mzstatic.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "netflix.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "nflxvideo.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "saks.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "saksfifthavenue.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "skype.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "slickdeals.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "t.co")
+    addLockdownWhitelistedDomainIfNotExists(domain: "twimg.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "twitter.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "usbank.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "verisign.com")
+}
+
+func addLockdownWhitelistedDomainIfNotExists(domain: String) {
+    // only add it if it doesn't exist, and add it as true
+    var domains = getLockdownWhitelistedDomains()
+    if domains[domain] == nil {
+        domains[domain] = NSNumber(value: true)
+    }
+    defaults.set(domains, forKey: kLockdownWhitelistedDomains)
 }

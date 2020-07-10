@@ -13,11 +13,6 @@ struct SetRegionView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var newDomain: String = ""
-    
-    var blockLists: [BlockList] = getLockdownBlockLists()
-    @State var customBlockedDomains: [CustomBlockedDomain] = getCustomBlockedDomains()
-    
     var body: some View {
         
         VStack(spacing: 0.0) {

@@ -173,17 +173,27 @@ class VPNController: NSObject {
             manager.protocolConfiguration = p
             manager.isEnabled = true
             manager.isOnDemandEnabled = true
+            
+            var onDemandRules:[NEOnDemandRule] = [];
+            let whitelist = getAllWhitelistedDomains()
+            if whitelist.count > 0 {
+                let disconnectDomainRule = NEEvaluateConnectionRule(matchDomains: getAllWhitelistedDomains(), andAction: .neverConnect)
+                let disconnectRule = NEOnDemandRuleEvaluateConnection()
+                disconnectRule.connectionRules = [disconnectDomainRule]
+                onDemandRules.append(disconnectRule)
+            }
             let connectRule = NEOnDemandRuleConnect()
             connectRule.interfaceTypeMatch = .any
-            manager.onDemandRules = [connectRule]
+            onDemandRules.append(connectRule)
+            manager.onDemandRules = onDemandRules
 
             DDLogInfo("VPN status before loading: \(self.manager.connection.status)")
             self.manager.localizedDescription! = kVPNLocalizedDescription
             self.manager.saveToPreferences(completionHandler: {(_ error: Error?) -> Void in
                 if let e = error {
-                    DDLogInfo("Saving VPN Error \(e)")
+                    DDLogError("Saving VPN Error \(e)")
                     if ((e as NSError).code == 4) { // if config is stale, probably multithreading bug
-                        DDLogInfo("Stale config, trying again")
+                        DDLogError("Stale config, trying again")
                         self.setUpAndEnableVPN(completion: { error in
                             completion(error)
                         })
@@ -193,10 +203,26 @@ class VPNController: NSObject {
                     }
                 }
                 else {
-                    completion(nil)
+                    // refresh the reference then force start the VPN
+                    manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in
+                        if let e = error {
+                            DDLogError("Reloading manager error: \(e)")
+                            completion(e)
+                        }
+                        else {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                do {
+                                    try manager.connection.startVPNTunnel()
+                                    completion(nil)
+                                }
+                                catch {
+                                    DDLogError("Activating VPN Error \(error)")
+                                    completion(error) // TODO: Better error handling
+                                }
+                            }
+                        }
+                    })
                 }
-                // refresh the reference
-                manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in })
             })
         })
         

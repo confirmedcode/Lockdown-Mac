@@ -13,7 +13,7 @@ struct BlockListsView: View {
     @State private var newDomain: String = ""
     
     var blockLists: [BlockList] = getLockdownBlockLists()
-    @State var customBlockedDomains: [CustomBlockedDomain] = getCustomBlockedDomains()
+    @State var userBlockedDomains: [UserBlockedDomain] = getUserBlockedDomainsArray()
     
     var body: some View {
 
@@ -63,7 +63,7 @@ struct BlockListsView: View {
                     }
                     .padding(.bottom, 10)
                     .padding(.horizontal, 10)
-                    List (getCustomBlockedDomains().enumerated().map({ $0 }), id: \.element.domain) { index, customDomain in
+                    List (getUserBlockedDomainsArray().enumerated().map({ $0 }), id: \.element.domain) { index, customDomain in
                         VStack (alignment: .leading, spacing: 0.0) {
                             HStack {
                                 Text(customDomain.domain)
@@ -75,15 +75,25 @@ struct BlockListsView: View {
                                 Button(
                                     action: {
                                         setUserBlockedDomain(domain: customDomain.domain, enabled: !customDomain.enabled)
-                                        FirewallController.shared.restart()
+                                        if (getUserWantsVPNEnabled()) {
+                                            VPNController.shared.restart()
+                                        }
+                                        else {
+                                            FirewallController.shared.restart()
+                                        }
                                 }) {
                                     Text(customDomain.enabled ? "Blocked" : "Not Blocked")
                                     .font(cFontSmall)
                                 }
                                 Button(action: {
                                     deleteUserBlockedDomain(domain: customDomain.domain)
-                                    self.customBlockedDomains.remove(at: index)
-                                    FirewallController.shared.restart()
+                                    self.userBlockedDomains.remove(at: index)
+                                    if (getUserWantsVPNEnabled()) {
+                                        VPNController.shared.restart()
+                                    }
+                                    else {
+                                        FirewallController.shared.restart()
+                                    }
                                 }) {
                                     Text("×")
                                         .padding(.bottom, 2)
@@ -108,10 +118,16 @@ struct BlockListsView: View {
     
     func addDomain() {
         if self.newDomain.count > 0 {
-            self.customBlockedDomains.append(CustomBlockedDomain(domain: self.newDomain.lowercased(), enabled: true))
+            self.userBlockedDomains.append(UserBlockedDomain(domain: self.newDomain.lowercased(), enabled: true))
             addUserBlockedDomain(domain: self.newDomain.lowercased())
+            userBlockedDomains = getUserBlockedDomainsArray()
             self.newDomain = ""
-            FirewallController.shared.restart()
+            if (getUserWantsVPNEnabled()) {
+                VPNController.shared.restart()
+            }
+            else {
+                FirewallController.shared.restart()
+            }
         }
     }
     
@@ -145,7 +161,12 @@ struct BlockListRow: View {
                         var ldDefaults = getLockdownBlockedDomains()
                         ldDefaults.lockdownDefaults[self.blockList.lockdownGroup.internalID] = self.blockList.lockdownGroup
                         defaults.set(try? PropertyListEncoder().encode(ldDefaults), forKey: kLockdownBlockedDomains)
-                        FirewallController.shared.restart()
+                        if (getUserWantsVPNEnabled()) {
+                            VPNController.shared.restart()
+                        }
+                        else {
+                            FirewallController.shared.restart()
+                        }
                 }) {
                     Text(blockList.lockdownGroup.enabled ? "Blocked" : "Not Blocked")
                     .font(cFontSmall)

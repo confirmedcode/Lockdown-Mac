@@ -34,6 +34,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         refreshVPNStatus()
         
         refreshIconState()
+        
+        if (VPNController.shared.status() == .disconnected && getUserWantsVPNEnabled() == true) {
+            DDLogInfo("UserWantsVPNEnabled = true and disconnected, reactivating.")
+            VPNController.shared.restart()
+        }
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {
@@ -125,6 +130,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         
         setupFirewallDefaultBlockLists()
+        setupLockdownWhitelistedDomains()
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
         
