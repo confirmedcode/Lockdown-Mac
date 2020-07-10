@@ -394,73 +394,74 @@ struct ContentView: View {
         if (newVPNShouldBeConnectedStatus == true) {
             DDLogInfo("Toggle VPN: off currently, turning it on")
 
-            // VPN overrides firewall
-            if (getUserWantsFirewallEnabled()) {
-                FirewallController.shared.setEnabled(false)
-            }
-            
-            // Delay to give time for Firewall to turn off
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                firstly {
-                    try Client.signInWithEmail()
+            // VPN overrides firewall - always turn it off
+            FirewallController.shared.setEnabled(false, completion: { error in
+                if error != nil {
+                    DDLogError("Unable to turn off Firewall while toggling VPN, continuing")
                 }
-                .then { (signin: SignIn) -> Promise<GetKey> in
-                    // TODO: don't always do this -- if we already have a key, then only do it once per day max
-                    try Client.getKey()
-                }
-                .done { (getKey: GetKey) in
-                    try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                    
-                    if (defaults.bool(forKey: kHasSeenIKEv2Dialog) == false) {
-                        let alert = NSAlert()
-                        alert.informativeText = "You may see a dialog that says \"NEIKEv2Provider wants to access key 'privateKey' in your keychain\".\n\nTo complete setup, enter your system password (the password you use to log into your computer) and click \"Always Allow\"."
-                        alert.messageText = "Secure Tunnel Setup"
-                        alert.addButton(withTitle: "Okay")
-                        alert.runModal()
-                        defaults.set(true, forKey: kHasSeenIKEv2Dialog)
+                // Wait 1 second
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    firstly {
+                        try Client.signInWithEmail()
                     }
-                    
-                    VPNController.shared.setEnabled(true, completion: {
-                        success in
-                        if (hideAfterActivating) {
-                            NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
+                    .then { (signin: SignIn) -> Promise<GetKey> in
+                        // TODO: don't always do this -- if we already have a key, then only do it once per day max
+                        try Client.getKey()
+                    }
+                    .done { (getKey: GetKey) in
+                        try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                        
+                        if (defaults.bool(forKey: kHasSeenIKEv2Dialog) == false) {
+                            let alert = NSAlert()
+                            alert.informativeText = "You may see a dialog that says \"NEIKEv2Provider wants to access key 'privateKey' in your keychain\".\n\nTo complete setup, enter your system password (the password you use to log into your computer) and click \"Always Allow\"."
+                            alert.messageText = "Secure Tunnel Setup"
+                            alert.addButton(withTitle: "Okay")
+                            alert.runModal()
+                            defaults.set(true, forKey: kHasSeenIKEv2Dialog)
+                        }
+                        
+                        VPNController.shared.setEnabled(true, completion: {
+                            success in
+                            if (hideAfterActivating) {
+                                NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
+                            }
+                            else {
+                                NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+                            }
+                        })
+                        toggleVPNinProgress = false
+                    }
+                    .catch { error in
+                        setUserWantsVPNEnabled(false)
+
+                        let nsError = error as NSError
+                        if nsError.domain == NSURLErrorDomain {
+                            self.errorTitle = "Network Error"
+                            self.errorMessage = "Please check your internet connection. If this persists, please contact team@lockdownhq.com.\n\nError Details\n" + nsError.localizedDescription
+                        }
+                        else if let apiError = error as? ApiError {
+                            switch apiError.code {
+                            case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                                self.errorTitle = "No Active Subscription"
+                                self.errorMessage = "Check that you are subscribed to Lockdown Secure Tunnel on your iPhone or iPad and that it's connected with the account: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")"
+                            case kApiCodeMobileSubscriptionOnly:
+                                self.errorTitle = "Upgrade Subscription"
+                                self.errorMessage = "Your Secure Tunnel subscription on the account \((getAPICredentials() != nil) ? getAPICredentials()!.email : "") is only valid for iPhone and iPad.\n\nUpgrade to a Pro subscription to enable Mac:\n\n1) Open Settings app\n2) Tap [Your Name]\n3) Tap Subscriptions\n4) Tap Lockdown\n5) Choose a monthly/annual Pro plan\n6) Open Lockdown on iPhone/iPad\n7) Turn the Secure Tunnel Off, Then On\n\nThis process syncs your subscription between Lockdown Mac and iOS. For any questions, email support at team@lockdownhq.com."
+                            default:
+                                self.errorTitle = "Unexpected API Error"
+                                self.errorMessage = "Message: \(apiError.localizedDescription)\nCode: \(apiError.code)\nIf this persists, please contact team@lockdownhq.com."
+                            }
                         }
                         else {
-                            NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
+                            self.errorTitle = "Unexpected Error"
+                            self.errorMessage = "Message: \(error.localizedDescription)\nIf this persists, please contact team@lockdownhq.com."
                         }
-                    })
-                    toggleVPNinProgress = false
+                        
+                        self.showError = true
+                        toggleVPNinProgress = false
+                    }
                 }
-                .catch { error in
-                    setUserWantsVPNEnabled(false)
-
-                    let nsError = error as NSError
-                    if nsError.domain == NSURLErrorDomain {
-                        self.errorTitle = "Network Error"
-                        self.errorMessage = "Please check your internet connection. If this persists, please contact team@lockdownhq.com.\n\nError Details\n" + nsError.localizedDescription
-                    }
-                    else if let apiError = error as? ApiError {
-                        switch apiError.code {
-                        case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                            self.errorTitle = "No Active Subscription"
-                            self.errorMessage = "Check that you are subscribed to Lockdown Secure Tunnel on your iPhone or iPad and that it's connected with the account: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")"
-                        case kApiCodeMobileSubscriptionOnly:
-                            self.errorTitle = "Upgrade Subscription"
-                            self.errorMessage = "Your Secure Tunnel subscription on the account \((getAPICredentials() != nil) ? getAPICredentials()!.email : "") is only valid for iPhone and iPad.\n\nUpgrade to a Pro subscription to enable Mac:\n\n1) Open Settings app\n2) Tap [Your Name]\n3) Tap Subscriptions\n4) Tap Lockdown\n5) Choose a monthly/annual Pro plan\n6) Open Lockdown on iPhone/iPad\n7) Turn the Secure Tunnel Off, Then On\n\nThis process syncs your subscription between Lockdown Mac and iOS. For any questions, email support at team@lockdownhq.com."
-                        default:
-                            self.errorTitle = "Unexpected API Error"
-                            self.errorMessage = "Message: \(apiError.localizedDescription)\nCode: \(apiError.code)\nIf this persists, please contact team@lockdownhq.com."
-                        }
-                    }
-                    else {
-                        self.errorTitle = "Unexpected Error"
-                        self.errorMessage = "Message: \(error.localizedDescription)\nIf this persists, please contact team@lockdownhq.com."
-                    }
-                    
-                    self.showError = true
-                    toggleVPNinProgress = false
-                }
-            }
+            })
             
         }
         // VPN should not be connected
