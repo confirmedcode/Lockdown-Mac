@@ -123,7 +123,7 @@ struct ContentView: View {
                     .foregroundColor(Color(NSColor.labelColor))
                     .padding(.top, 12)
                     .padding(.horizontal, 14)
-                Text("Block Trackers & Ads For Free")
+                Text("Block Trackers & Ads")
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
                     .font(cFontSubtitle)
                     .foregroundColor(Color(NSColor.lightGray))
@@ -245,7 +245,7 @@ struct ContentView: View {
                         DDLogInfo("audit report opened")
                     }
                 }) {
-                    Text("June 9th, 2019")
+                    Text("July 23rd, 2020")
                         .font(cFontSubtitle2)
                         .foregroundColor(Color.confirmedBlue)
                         .frame(width: 150, height: 18)
