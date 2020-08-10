@@ -34,13 +34,13 @@ struct BlockListsView: View {
             HStack(spacing: 0.0) {
                 
                 VStack(spacing: 0.0) {
-                    Text("Suggested Defaults")
+                    Text("Pre-Configured Lists")
                     .font(cFontTitle)
                     .padding(.vertical, 10)
                     List (blockLists, id: \.name) { blockList in
                         BlockListRow(blockList: blockList)
                     }
-                    .accessibility(label: Text("Suggested Default Block Lists"))
+                    .accessibility(label: Text("Pre-Configured Block Lists"))
                 }
                 
                 Divider()

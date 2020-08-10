@@ -143,8 +143,9 @@ func metricsToString(metric : Int) -> String {
 func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
+    
     let snapchatAnalytics = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "snapchatAnalytics",
         name: "Snapchat Trackers",
         iconURL: "snapchat_analytics_icon",
@@ -153,16 +154,16 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let gameAds = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "gameAds",
         name: "Game Ads",
         iconURL: "game_ads_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "game_ads"),
         ipRanges: [:])
     
     let clickbait = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "clickbait",
         name: "Clickbait",
         iconURL: "clickbait_icon",
@@ -171,7 +172,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let crypto = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "crypto_mining",
         name: "Crypto Mining",
         iconURL: "crypto_icon",
@@ -180,25 +181,25 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let emailOpens = LockdownGroup.init(
-        version: 21,
+        version: 29,
         internalID: "email_opens",
-        name: "Email Trackers (Beta)",
+        name: "Email Trackers",
         iconURL: "email_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "email_opens"),
         ipRanges: [:])
     
     let facebookInc = LockdownGroup.init(
-        version: 21,
+        version: 30,
         internalID: "facebook_inc",
-        name: "Facebook Apps (Beta)",
+        name: "Facebook & WhatsApp",
         iconURL: "facebook_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "facebook_inc"),
         ipRanges: [:])
     
     let facebookSDK = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "facebook_sdk",
         name: "Facebook Trackers",
         iconURL: "facebook_white_icon",
@@ -207,7 +208,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScripts = LockdownGroup.init(
-        version: 21,
+        version: 28,
         internalID: "marketing_scripts",
         name: "Marketing Trackers",
         iconURL: "marketing_icon",
@@ -215,13 +216,58 @@ func setupFirewallDefaultBlockLists() {
         domains: getDomainBlockList(filename: "marketing"),
         ipRanges: [:])
     
+    let marketingScriptsII = LockdownGroup.init(
+        version: 27,
+        internalID: "marketing_beta_scripts",
+        name: "Marketing Trackers II",
+        iconURL: "marketing_icon",
+        enabled: true,
+        domains: getDomainBlockList(filename: "marketing_beta"),
+        ipRanges: [:])
+
     let ransomware = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "ransomware",
         name: "Ransomware",
         iconURL: "ransomware_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "ransomware"),
+        ipRanges: [:])
+
+    let googleShoppingAds = LockdownGroup.init(
+        version: 33,
+        internalID: "google_shopping_ads",
+        name: "Google Shopping Ads",
+        iconURL: "google_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "google_shopping_ads"),
+        ipRanges: [:])
+    
+    let dataTrackers = LockdownGroup.init(
+        version: 28,
+        internalID: "data_trackers",
+        name: "Data Trackers",
+        iconURL: "user_data_icon",
+        enabled: true,
+        domains: getDomainBlockList(filename: "data_trackers"),
+        ipRanges: [:])
+    
+    let generalAds = LockdownGroup.init(
+        version: 35,
+        internalID: "general_ads",
+        name: "General Ads",
+        iconURL: "ads_icon",
+        enabled: true,
+        domains: getDomainBlockList(filename: "general_ads"),
+        ipRanges: [:])
+    
+    let reporting = LockdownGroup.init(
+        version: 27,
+        internalID: "reporting",
+        name: "Reporting",
+        iconURL: "reporting_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "reporting"),
         ipRanges: [:])
     
     let defaultLockdownSettings = [snapchatAnalytics,
@@ -232,7 +278,12 @@ func setupFirewallDefaultBlockLists() {
                                    facebookInc,
                                    facebookSDK,
                                    marketingScripts,
-                                   ransomware];
+                                   marketingScriptsII,
+                                   ransomware,
+                                   googleShoppingAds,
+                                   dataTrackers,
+                                   generalAds,
+                                   reporting];
     
     for var def in defaultLockdownSettings {
         if let current = lockdownBlockedDomains.lockdownDefaults[def.internalID], current.version >= def.version {}
@@ -453,6 +504,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "apple.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "apple.news")
     addLockdownWhitelistedDomainIfNotExists(domain: "apple-cloudkit.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "archive.is")
     addLockdownWhitelistedDomainIfNotExists(domain: "bamgrid.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cdn-apple.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "confirmedvpn.com")
@@ -470,6 +522,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "huluim.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "icloud-content.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "icloud.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "kroger.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "letsencrypt.org")
     addLockdownWhitelistedDomainIfNotExists(domain: "lowes.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
@@ -478,15 +531,21 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "mzstatic.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "netflix.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "nflxvideo.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "nianticlabs.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "quibi.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "saks.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "saksfifthavenue.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "skype.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "slickdeals.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "southwest.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "t.co")
+    addLockdownWhitelistedDomainIfNotExists(domain: "tapbots.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "tapbots.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "twimg.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "usbank.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "verisign.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "vudu.com")
 }
 
 func addLockdownWhitelistedDomainIfNotExists(domain: String) {

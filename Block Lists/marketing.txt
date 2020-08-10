@@ -6,13 +6,11 @@ api.mixpanel.com
 app-measurement.com
 appboy.com
 braze.com
-doubleclick.net
 fabric.io
 facebook.net
 fb.com
 firebase.com
 google-analytics.com
-googleadservices.com
 heapanalytics.com
 hm.baidu.com
 in.getclicky.com
