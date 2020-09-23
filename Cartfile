@@ -1,3 +1,2 @@
 github "CocoaLumberjack/CocoaLumberjack" ~> 3.2.1
 github "zhuhaow/NEKit"
-git "git@github.com:/confirmedcode/TrustAppleSharedLib.git" "master" 

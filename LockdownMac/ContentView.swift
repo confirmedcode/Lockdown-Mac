@@ -123,7 +123,7 @@ struct ContentView: View {
                     .foregroundColor(Color(NSColor.labelColor))
                     .padding(.top, 12)
                     .padding(.horizontal, 14)
-                Text("Block Trackers & Ads")
+                Text("Block Trackers & Badware")
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 16, maxHeight: 16, alignment: .leading)
                     .font(cFontSubtitle)
                     .foregroundColor(Color(NSColor.lightGray))

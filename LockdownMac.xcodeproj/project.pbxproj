@@ -12,6 +12,20 @@
 		3D31C17623D008980039F0D7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D31C17423D008980039F0D7 /* Environment.swift */; };
 		3D31C17A23D00AF10039F0D7 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D31C17923D00AF10039F0D7 /* PromiseKit */; };
 		3D4366FC23D3C16C0011A461 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4366FB23D3C16C0011A461 /* EmailLoginView.swift */; };
+		3D549AD9251B0DF300AD5386 /* marketing_beta.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549ACB251B0DF200AD5386 /* marketing_beta.txt */; };
+		3D549ADA251B0DF300AD5386 /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549ACC251B0DF200AD5386 /* email_opens.txt */; };
+		3D549ADB251B0DF300AD5386 /* ransomware.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549ACD251B0DF200AD5386 /* ransomware.txt */; };
+		3D549ADC251B0DF300AD5386 /* general_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549ACE251B0DF200AD5386 /* general_ads.txt */; };
+		3D549ADD251B0DF300AD5386 /* reporting.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549ACF251B0DF200AD5386 /* reporting.txt */; };
+		3D549ADE251B0DF300AD5386 /* snapchat_analytics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD0251B0DF200AD5386 /* snapchat_analytics.txt */; };
+		3D549ADF251B0DF300AD5386 /* crypto_mining.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD1251B0DF200AD5386 /* crypto_mining.txt */; };
+		3D549AE0251B0DF300AD5386 /* facebook_sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD2251B0DF200AD5386 /* facebook_sdk.txt */; };
+		3D549AE1251B0DF300AD5386 /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD3251B0DF200AD5386 /* facebook_inc.txt */; };
+		3D549AE2251B0DF300AD5386 /* data_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD4251B0DF200AD5386 /* data_trackers.txt */; };
+		3D549AE3251B0DF300AD5386 /* google_shopping_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD5251B0DF200AD5386 /* google_shopping_ads.txt */; };
+		3D549AE4251B0DF300AD5386 /* marketing.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD6251B0DF200AD5386 /* marketing.txt */; };
+		3D549AE5251B0DF300AD5386 /* clickbait.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD7251B0DF300AD5386 /* clickbait.txt */; };
+		3D549AE6251B0DF300AD5386 /* game_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D549AD8251B0DF300AD5386 /* game_ads.txt */; };
 		3D5F3ED1237E245700E0AC34 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F3ED0237E245700E0AC34 /* FirewallController.swift */; };
 		3D5F3EDA237E26BA00E0AC34 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F3ED9237E26BA00E0AC34 /* PacketTunnelProvider.swift */; };
 		3D5F3EDF237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3D5F3ED7237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -20,11 +34,6 @@
 		3D6649AB23D2BA8400389AE3 /* LockdownObserverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6649AA23D2BA8400389AE3 /* LockdownObserverFactory.swift */; };
 		3D6649AC23D2BA8400389AE3 /* LockdownObserverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6649AA23D2BA8400389AE3 /* LockdownObserverFactory.swift */; };
 		3D6649AE23D2BAFD00389AE3 /* BlockMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6649AD23D2BAFD00389AE3 /* BlockMetricsView.swift */; };
-		3D794FDE24E0F619001D68AE /* data_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D794FD924E0F618001D68AE /* data_trackers.txt */; };
-		3D794FDF24E0F619001D68AE /* general_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D794FDA24E0F618001D68AE /* general_ads.txt */; };
-		3D794FE024E0F619001D68AE /* reporting.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D794FDB24E0F619001D68AE /* reporting.txt */; };
-		3D794FE124E0F619001D68AE /* marketing_beta.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D794FDC24E0F619001D68AE /* marketing_beta.txt */; };
-		3D794FE224E0F619001D68AE /* google_shopping_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D794FDD24E0F619001D68AE /* google_shopping_ads.txt */; };
 		3D7BAEC423D1165400CF5299 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D7BAEBB23D1162000CF5299 /* Montserrat-Bold.ttf */; };
 		3D7BAEC523D1165900CF5299 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D7BAEB923D1162000CF5299 /* Montserrat-Light.ttf */; };
 		3D7BAEC623D1165900CF5299 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D7BAEBA23D1162000CF5299 /* Montserrat-Medium.ttf */; };
@@ -57,15 +66,6 @@
 		3D929E972421544300BF397F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D929E962421544200BF397F /* ServiceManagement.framework */; };
 		3D96CD1023984C48007F5C3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD0F23984C48007F5C3C /* ContentView.swift */; };
 		3D96CD1223986232007F5C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD11239861D7007F5C3C /* Main.storyboard */; };
-		3D96CD6F239892EE007F5C3C /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD66239892ED007F5C3C /* email_opens.txt */; };
-		3D96CD71239892EE007F5C3C /* clickbait.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD67239892EE007F5C3C /* clickbait.txt */; };
-		3D96CD73239892EE007F5C3C /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD68239892EE007F5C3C /* facebook_inc.txt */; };
-		3D96CD75239892EE007F5C3C /* facebook_sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD69239892EE007F5C3C /* facebook_sdk.txt */; };
-		3D96CD77239892EE007F5C3C /* game_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD6A239892EE007F5C3C /* game_ads.txt */; };
-		3D96CD79239892EE007F5C3C /* snapchat_analytics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD6B239892EE007F5C3C /* snapchat_analytics.txt */; };
-		3D96CD7B239892EE007F5C3C /* ransomware.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD6C239892EE007F5C3C /* ransomware.txt */; };
-		3D96CD7D239892EE007F5C3C /* crypto_mining.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD6D239892EE007F5C3C /* crypto_mining.txt */; };
-		3D96CD7F239892EE007F5C3C /* marketing.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD6E239892EE007F5C3C /* marketing.txt */; };
 		3D96CD8223989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
 		3D96CD8323989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
 		3DC605E623EE3BD900B30DB3 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */; };
@@ -128,6 +128,20 @@
 		3D1AF4EA23D833160097341B /* LoadingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
 		3D31C17423D008980039F0D7 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3D4366FB23D3C16C0011A461 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
+		3D549ACB251B0DF200AD5386 /* marketing_beta.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marketing_beta.txt; sourceTree = "<group>"; };
+		3D549ACC251B0DF200AD5386 /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
+		3D549ACD251B0DF200AD5386 /* ransomware.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ransomware.txt; sourceTree = "<group>"; };
+		3D549ACE251B0DF200AD5386 /* general_ads.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = general_ads.txt; sourceTree = "<group>"; };
+		3D549ACF251B0DF200AD5386 /* reporting.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reporting.txt; sourceTree = "<group>"; };
+		3D549AD0251B0DF200AD5386 /* snapchat_analytics.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = snapchat_analytics.txt; sourceTree = "<group>"; };
+		3D549AD1251B0DF200AD5386 /* crypto_mining.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_mining.txt; sourceTree = "<group>"; };
+		3D549AD2251B0DF200AD5386 /* facebook_sdk.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_sdk.txt; sourceTree = "<group>"; };
+		3D549AD3251B0DF200AD5386 /* facebook_inc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc.txt; sourceTree = "<group>"; };
+		3D549AD4251B0DF200AD5386 /* data_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data_trackers.txt; sourceTree = "<group>"; };
+		3D549AD5251B0DF200AD5386 /* google_shopping_ads.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = google_shopping_ads.txt; sourceTree = "<group>"; };
+		3D549AD6251B0DF200AD5386 /* marketing.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marketing.txt; sourceTree = "<group>"; };
+		3D549AD7251B0DF300AD5386 /* clickbait.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clickbait.txt; sourceTree = "<group>"; };
+		3D549AD8251B0DF300AD5386 /* game_ads.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = game_ads.txt; sourceTree = "<group>"; };
 		3D5F3ED0237E245700E0AC34 /* FirewallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirewallController.swift; sourceTree = "<group>"; };
 		3D5F3ED7237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Lockdown Mac Tunnel.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5F3ED9237E26BA00E0AC34 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
@@ -135,11 +149,6 @@
 		3D5F3EDC237E26BA00E0AC34 /* Lockdown_Mac_Tunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lockdown_Mac_Tunnel.entitlements; sourceTree = "<group>"; };
 		3D6649AA23D2BA8400389AE3 /* LockdownObserverFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownObserverFactory.swift; sourceTree = "<group>"; };
 		3D6649AD23D2BAFD00389AE3 /* BlockMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMetricsView.swift; sourceTree = "<group>"; };
-		3D794FD924E0F618001D68AE /* data_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data_trackers.txt; sourceTree = "<group>"; };
-		3D794FDA24E0F618001D68AE /* general_ads.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = general_ads.txt; sourceTree = "<group>"; };
-		3D794FDB24E0F619001D68AE /* reporting.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reporting.txt; sourceTree = "<group>"; };
-		3D794FDC24E0F619001D68AE /* marketing_beta.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marketing_beta.txt; sourceTree = "<group>"; };
-		3D794FDD24E0F619001D68AE /* google_shopping_ads.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = google_shopping_ads.txt; sourceTree = "<group>"; };
 		3D7BAEB823D1162000CF5299 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D7BAEB923D1162000CF5299 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		3D7BAEBA23D1162000CF5299 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -170,15 +179,6 @@
 		3D929E962421544200BF397F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3D96CD0F23984C48007F5C3C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D96CD11239861D7007F5C3C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		3D96CD66239892ED007F5C3C /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
-		3D96CD67239892EE007F5C3C /* clickbait.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clickbait.txt; sourceTree = "<group>"; };
-		3D96CD68239892EE007F5C3C /* facebook_inc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc.txt; sourceTree = "<group>"; };
-		3D96CD69239892EE007F5C3C /* facebook_sdk.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_sdk.txt; sourceTree = "<group>"; };
-		3D96CD6A239892EE007F5C3C /* game_ads.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = game_ads.txt; sourceTree = "<group>"; };
-		3D96CD6B239892EE007F5C3C /* snapchat_analytics.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = snapchat_analytics.txt; sourceTree = "<group>"; };
-		3D96CD6C239892EE007F5C3C /* ransomware.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ransomware.txt; sourceTree = "<group>"; };
-		3D96CD6D239892EE007F5C3C /* crypto_mining.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_mining.txt; sourceTree = "<group>"; };
-		3D96CD6E239892EE007F5C3C /* marketing.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marketing.txt; sourceTree = "<group>"; };
 		3D96CD8123989350007F5C3C /* FirewallUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallUtilities.swift; sourceTree = "<group>"; };
 		3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLogger.swift; sourceTree = "<group>"; };
 		A1769104207FA2F600CAF05C /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -295,20 +295,20 @@
 		3D96CD65239892D9007F5C3C /* Block Lists */ = {
 			isa = PBXGroup;
 			children = (
-				3D96CD67239892EE007F5C3C /* clickbait.txt */,
-				3D96CD6D239892EE007F5C3C /* crypto_mining.txt */,
-				3D794FD924E0F618001D68AE /* data_trackers.txt */,
-				3D96CD66239892ED007F5C3C /* email_opens.txt */,
-				3D96CD68239892EE007F5C3C /* facebook_inc.txt */,
-				3D96CD69239892EE007F5C3C /* facebook_sdk.txt */,
-				3D96CD6A239892EE007F5C3C /* game_ads.txt */,
-				3D794FDA24E0F618001D68AE /* general_ads.txt */,
-				3D794FDD24E0F619001D68AE /* google_shopping_ads.txt */,
-				3D794FDC24E0F619001D68AE /* marketing_beta.txt */,
-				3D96CD6E239892EE007F5C3C /* marketing.txt */,
-				3D96CD6C239892EE007F5C3C /* ransomware.txt */,
-				3D794FDB24E0F619001D68AE /* reporting.txt */,
-				3D96CD6B239892EE007F5C3C /* snapchat_analytics.txt */,
+				3D549AD7251B0DF300AD5386 /* clickbait.txt */,
+				3D549AD1251B0DF200AD5386 /* crypto_mining.txt */,
+				3D549AD4251B0DF200AD5386 /* data_trackers.txt */,
+				3D549ACC251B0DF200AD5386 /* email_opens.txt */,
+				3D549AD3251B0DF200AD5386 /* facebook_inc.txt */,
+				3D549AD2251B0DF200AD5386 /* facebook_sdk.txt */,
+				3D549AD8251B0DF300AD5386 /* game_ads.txt */,
+				3D549ACE251B0DF200AD5386 /* general_ads.txt */,
+				3D549AD5251B0DF200AD5386 /* google_shopping_ads.txt */,
+				3D549ACB251B0DF200AD5386 /* marketing_beta.txt */,
+				3D549AD6251B0DF200AD5386 /* marketing.txt */,
+				3D549ACD251B0DF200AD5386 /* ransomware.txt */,
+				3D549ACF251B0DF200AD5386 /* reporting.txt */,
+				3D549AD0251B0DF200AD5386 /* snapchat_analytics.txt */,
 			);
 			path = "Block Lists";
 			sourceTree = "<group>";
@@ -552,32 +552,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D7BAEC523D1165900CF5299 /* Montserrat-Light.ttf in Resources */,
+				3D549AE5251B0DF300AD5386 /* clickbait.txt in Resources */,
 				3D7BAEC623D1165900CF5299 /* Montserrat-Medium.ttf in Resources */,
 				3D7BAEC723D1165900CF5299 /* Montserrat-Regular.ttf in Resources */,
 				3D7BAEC823D1165900CF5299 /* Montserrat-SemiBold.ttf in Resources */,
 				3D7BAEC923D1165900CF5299 /* Montserrat-Thin.ttf in Resources */,
+				3D549ADE251B0DF300AD5386 /* snapchat_analytics.txt in Resources */,
+				3D549ADC251B0DF300AD5386 /* general_ads.txt in Resources */,
+				3D549AE1251B0DF300AD5386 /* facebook_inc.txt in Resources */,
+				3D549AE2251B0DF300AD5386 /* data_trackers.txt in Resources */,
 				3D7BAEC423D1165400CF5299 /* Montserrat-Bold.ttf in Resources */,
-				3D96CD73239892EE007F5C3C /* facebook_inc.txt in Resources */,
+				3D549AE6251B0DF300AD5386 /* game_ads.txt in Resources */,
 				3D96CD1223986232007F5C3C /* Main.storyboard in Resources */,
-				3D794FDE24E0F619001D68AE /* data_trackers.txt in Resources */,
-				3D794FE124E0F619001D68AE /* marketing_beta.txt in Resources */,
-				3D96CD79239892EE007F5C3C /* snapchat_analytics.txt in Resources */,
+				3D549ADF251B0DF300AD5386 /* crypto_mining.txt in Resources */,
+				3D549AE4251B0DF300AD5386 /* marketing.txt in Resources */,
+				3D549AE0251B0DF300AD5386 /* facebook_sdk.txt in Resources */,
+				3D549ADA251B0DF300AD5386 /* email_opens.txt in Resources */,
+				3D549ADD251B0DF300AD5386 /* reporting.txt in Resources */,
 				3D7DC79E23D922690082AB66 /* SF-Pro-Rounded-Bold.otf in Resources */,
+				3D549AE3251B0DF300AD5386 /* google_shopping_ads.txt in Resources */,
 				A191921B1F44E8390071FF62 /* Assets.xcassets in Resources */,
-				3D96CD7D239892EE007F5C3C /* crypto_mining.txt in Resources */,
-				3D96CD71239892EE007F5C3C /* clickbait.txt in Resources */,
 				3D7DC79D23D922690082AB66 /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				3D549ADB251B0DF300AD5386 /* ransomware.txt in Resources */,
 				A1769105207FA2F600CAF05C /* LICENSE.md in Resources */,
-				3D794FE024E0F619001D68AE /* reporting.txt in Resources */,
 				3D7DC79F23D922690082AB66 /* SF-Pro-Rounded-Medium.otf in Resources */,
-				3D96CD77239892EE007F5C3C /* game_ads.txt in Resources */,
-				3D794FDF24E0F619001D68AE /* general_ads.txt in Resources */,
 				3D7DC7A023D922690082AB66 /* SF-Pro-Rounded-Regular.otf in Resources */,
-				3D794FE224E0F619001D68AE /* google_shopping_ads.txt in Resources */,
-				3D96CD75239892EE007F5C3C /* facebook_sdk.txt in Resources */,
-				3D96CD6F239892EE007F5C3C /* email_opens.txt in Resources */,
-				3D96CD7B239892EE007F5C3C /* ransomware.txt in Resources */,
-				3D96CD7F239892EE007F5C3C /* marketing.txt in Resources */,
+				3D549AD9251B0DF300AD5386 /* marketing_beta.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,7 +685,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -700,7 +700,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.7;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
@@ -722,7 +722,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -737,7 +737,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.7;
+				MARKETING_VERSION = 1.0.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -760,7 +760,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -769,7 +769,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.7;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
@@ -792,7 +792,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -801,7 +801,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.7;
+				MARKETING_VERSION = 1.0.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -929,7 +929,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -943,7 +943,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.7;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -963,7 +963,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -976,7 +976,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.7;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

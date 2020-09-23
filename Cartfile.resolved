@@ -1,5 +1,4 @@
-git "git@github.com:/confirmedcode/TrustAppleSharedLib.git" "0822d2921a393ec2d4f8841bb76a50ac213d4c3d"
-github "CocoaLumberjack/CocoaLumberjack" "3.6.1"
+github "CocoaLumberjack/CocoaLumberjack" "3.6.2"
 github "behrang/YamlSwift" "3.4.3"
 github "lexrus/MMDB-Swift" "0.5.0"
 github "robbiehanson/CocoaAsyncSocket" "7.6.4"

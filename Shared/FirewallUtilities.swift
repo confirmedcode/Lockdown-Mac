@@ -140,9 +140,9 @@ func metricsToString(metric : Int) -> String {
 
 // MARK: - Blocked domains and lists
 
+
 func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
-    
     
     let snapchatAnalytics = LockdownGroup.init(
         version: 26,
@@ -154,9 +154,9 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let gameAds = LockdownGroup.init(
-        version: 26,
+        version: 27,
         internalID: "gameAds",
-        name: "Game Ads",
+        name: "Game Marketing",
         iconURL: "game_ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "game_ads"),
@@ -208,7 +208,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScripts = LockdownGroup.init(
-        version: 28,
+        version: 29,
         internalID: "marketing_scripts",
         name: "Marketing Trackers",
         iconURL: "marketing_icon",
@@ -235,16 +235,16 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
 
     let googleShoppingAds = LockdownGroup.init(
-        version: 33,
+        version: 34,
         internalID: "google_shopping_ads",
-        name: "Google Shopping Ads",
+        name: "Google Shopping",
         iconURL: "google_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "google_shopping_ads"),
         ipRanges: [:])
     
     let dataTrackers = LockdownGroup.init(
-        version: 28,
+        version: 29,
         internalID: "data_trackers",
         name: "Data Trackers",
         iconURL: "user_data_icon",
@@ -253,9 +253,9 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let generalAds = LockdownGroup.init(
-        version: 35,
+        version: 37,
         internalID: "general_ads",
-        name: "General Ads",
+        name: "General Marketing",
         iconURL: "ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "general_ads"),
@@ -285,13 +285,14 @@ func setupFirewallDefaultBlockLists() {
                                    generalAds,
                                    reporting];
     
-    for var def in defaultLockdownSettings {
-        if let current = lockdownBlockedDomains.lockdownDefaults[def.internalID], current.version >= def.version {}
-        else {
-            if let current = lockdownBlockedDomains.lockdownDefaults[def.internalID] {
-                def.enabled = current.enabled // don't replace whether it was disabled
+    for var defaultGroup in defaultLockdownSettings {
+        if let current = lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID], current.version >= defaultGroup.version {
+            // no version change, no action needed
+        } else {
+            if let current = lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID] {
+                defaultGroup.enabled = current.enabled // don't replace whether it was disabled
             }
-            lockdownBlockedDomains.lockdownDefaults[def.internalID] = def
+            lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID] = defaultGroup
         }
     }
     
@@ -531,7 +532,6 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "mzstatic.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "netflix.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "nflxvideo.net")
-    addLockdownWhitelistedDomainIfNotExists(domain: "nianticlabs.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "quibi.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "saks.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "saksfifthavenue.com")
@@ -546,6 +546,8 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "usbank.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "verisign.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "vudu.com")
+    
+    setAsFalseLockdownWhitelistedDomain(domain: "nianticlabs.com")
 }
 
 func addLockdownWhitelistedDomainIfNotExists(domain: String) {
@@ -554,5 +556,11 @@ func addLockdownWhitelistedDomainIfNotExists(domain: String) {
     if domains[domain] == nil {
         domains[domain] = NSNumber(value: true)
     }
+    defaults.set(domains, forKey: kLockdownWhitelistedDomains)
+}
+
+func setAsFalseLockdownWhitelistedDomain(domain: String) {
+    var domains = getLockdownWhitelistedDomains()
+    domains[domain] = NSNumber(value: false)
     defaults.set(domains, forKey: kLockdownWhitelistedDomains)
 }
