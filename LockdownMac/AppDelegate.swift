@@ -95,6 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        for key in defaults.dictionaryRepresentation().keys {
 //            defaults.removeObject(forKey: key)
 //        }
+//        return
         
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         

@@ -68,10 +68,10 @@ struct ContentView: View {
                 .frame(width: 36, height: 20, alignment: .leading)
                 .padding(.top, 12)
                 .buttonStyle(BlankButtonStyle())
+                .disabled(anyPopoverShowing())
                 .popover(isPresented: self.$showMenu) {
                     MenuView()
                 }
-                .disabled(anyPopoverShowing())
                 .zIndex(100)
                 Text("Lockdown")
                 .multilineTextAlignment(.center)
@@ -159,10 +159,10 @@ struct ContentView: View {
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .buttonStyle(BlueButtonStyle())
+                    .disabled(anyPopoverShowing())
                     .popover(isPresented: self.$showViewLog) {
                         BlockLogView()
                     }
-                    .disabled(anyPopoverShowing())
                     Button(action: {
                             self.showBlockList = true
                         }) {
@@ -176,10 +176,10 @@ struct ContentView: View {
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .buttonStyle(BlueButtonStyle())
+                    .disabled(anyPopoverShowing())
                     .popover(isPresented: self.$showBlockList) {
                         BlockListsView()
                     }
-                    .disabled(anyPopoverShowing())
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
             }
@@ -266,10 +266,10 @@ struct ContentView: View {
                     }
                         .frame(minWidth: 0, maxWidth: .infinity)
                     .buttonStyle(BlueButtonStyle())
+                    .disabled(anyPopoverShowing())
                     .popover(isPresented: self.$showWhitelist) {
                         WhitelistView()
                     }
-                    .disabled(anyPopoverShowing())
                     Button(action: {
                             self.showSetRegion = true
                         }) {
@@ -294,10 +294,10 @@ struct ContentView: View {
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .buttonStyle(BlueButtonStyle())
+                    .disabled(anyPopoverShowing())
                     .popover(isPresented: self.$showSetRegion) {
                         SetRegionView()
                     }
-                    .disabled(anyPopoverShowing())
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
             }
