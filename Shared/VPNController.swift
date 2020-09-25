@@ -92,6 +92,7 @@ class VPNController: NSObject {
                 self.manager.isOnDemandEnabled = false
                 self.manager.onDemandRules = []
                 self.manager.saveToPreferences(completionHandler: {(_ error: Error?) -> Void in
+                    self.manager.connection.stopVPNTunnel()
                     // TODO: will this ever error?
                     completion(error)
                 })

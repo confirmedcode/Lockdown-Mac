@@ -123,6 +123,12 @@ class FirewallController: NSObject {
                     DDLogInfo("Successfully saved config for enabled state: \(enabled)")
                 }
                 self.refreshManager(completion: { error in
+                    if (enabled) {
+                        try? self.manager?.connection.startVPNTunnel()
+                    }
+                    else {
+                        self.manager?.connection.stopVPNTunnel()
+                    }
                     completion(nil)
                 })
             })
