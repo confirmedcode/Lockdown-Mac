@@ -253,7 +253,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let generalAds = LockdownGroup.init(
-        version: 37,
+        version: 38,
         internalID: "general_ads",
         name: "General Marketing",
         iconURL: "ads_icon",
@@ -501,6 +501,7 @@ func addUserWhitelistedDomain(domain: String) {
 }
 
 func setupLockdownWhitelistedDomains() {
+    addLockdownWhitelistedDomainIfNotExists(domain: "amazon.com") // This domain is not used for tracking (the tracker amazon-adsystem.com is blocked), but it does sometimes stop Secure Tunnel VPN users from viewing Amazon reviews. Users may un-whitelist this if they wish.
     addLockdownWhitelistedDomainIfNotExists(domain: "api.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "apple.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "apple.news")

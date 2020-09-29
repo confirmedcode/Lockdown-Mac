@@ -201,7 +201,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 else {
                     let alert = NSAlert()
                     alert.messageText = "Are you sure you want to quit?"
-                    alert.informativeText = "This deactivates the Firewall and Secure Tunnel and quits the app entirely."
+                    alert.informativeText = "This deactivates the Firewall and Secure Tunnel and quits the app entirely.\n\nIf you didn't request to close Lockdown, then your Mac is trying to automatically update Lockdown to a newer version. To complete the update, click \"Deactivate & Quit\". Lockdown will re-launch itself afterwards."
                     alert.showsSuppressionButton = true
                     alert.suppressionButton?.title = "Do not show this dialog again"
                     alert.alertStyle = .warning
