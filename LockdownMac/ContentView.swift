@@ -27,7 +27,6 @@ struct ContentView: View {
     
     @State private var showError: Bool = false
     @State private var showMenu: Bool = false
-    @State private var showViewLog: Bool = false
     @State private var showBlockList: Bool = false
     @State private var showWhitelist: Bool = false
     @State private var showSetRegion: Bool = false
@@ -44,7 +43,6 @@ struct ContentView: View {
         return (
             showError == true ||
             showMenu == true ||
-            showViewLog == true ||
             showBlockList == true ||
             showWhitelist == true ||
             showSetRegion == true ||
@@ -147,7 +145,20 @@ struct ContentView: View {
                 BlockMetricsView()
                 HStack(spacing: 0.5) {
                     Button(action: {
-                            self.showViewLog = true
+                        guard BlockLogWindowController.current == nil else {
+                            // the window already exists
+                            BlockLogWindowController.current?.window?.makeKeyAndOrderFront(self)
+                            return
+                        }
+                        
+                        // creating the window
+                        let frame = CGRect(
+                            origin: NSApp.keyWindow?.frame.origin ?? .zero,
+                            size: CGSize(width: 300, height: 500)
+                        )
+                        let controller = BlockLogWindowController(contentRect: frame)
+                        controller.showWindow(self)
+                        BlockLogWindowController.current = controller
                         }) {
                             Text("View Log")
                                 .font(cFontTitle)
@@ -160,9 +171,6 @@ struct ContentView: View {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .buttonStyle(BlueButtonStyle())
                     .disabled(anyPopoverShowing())
-                    .popover(isPresented: self.$showViewLog) {
-                        BlockLogView()
-                    }
                     Button(action: {
                             self.showBlockList = true
                         }) {
