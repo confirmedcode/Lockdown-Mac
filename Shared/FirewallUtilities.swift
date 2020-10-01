@@ -244,7 +244,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let dataTrackers = LockdownGroup.init(
-        version: 29,
+        version: 30,
         internalID: "data_trackers",
         name: "Data Trackers",
         iconURL: "user_data_icon",
@@ -509,6 +509,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "archive.is")
     addLockdownWhitelistedDomainIfNotExists(domain: "bamgrid.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cdn-apple.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "coinbase.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "confirmedvpn.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "creditkarma.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "digicert.com")
