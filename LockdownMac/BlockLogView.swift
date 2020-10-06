@@ -12,7 +12,9 @@ struct BlockLogView: View {
     
     @State var blockLogs: [BlockLog] = getBlockLogs()
     
-    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
+    let kvo = defaults.publisher(for: \.LockdownDayLogs, options: [])
+        .debounce(for: 0.3, scheduler: RunLoop.main)
     
     var body: some View {
         VStack(spacing: 0.0) {
@@ -33,11 +35,52 @@ struct BlockLogView: View {
                         BlockLogRow(blockLog: blockLog)
                     }
                 }
+                .onReceive(kvo) { _ in
+                    self.blockLogs = getBlockLogs()
+                }
+                .onReceive(timer) { _ in
+                    self.blockLogs = getBlockLogs()
+                }
             }
         }
         .frame(width: viewWidth, height: viewHeight * 2/3)
     }
     
+}
+
+final class BlockLogWindowController: NSWindowController, NSWindowDelegate {
+    
+    static var current: BlockLogWindowController?
+    
+    init(contentRect: CGRect) {
+        let mainView = BlockLogView()
+
+        let window = NSWindow(
+            contentRect: contentRect,
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Lockdown"
+        let hosting = NSHostingView(rootView: mainView)
+        window.contentView = hosting
+
+        super.init(window: window)
+        window.delegate = self
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func windowDidBecomeKey(_ notification: Notification) {
+        window?.level = .floating
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        BlockLogWindowController.current = nil
+    }
 }
 
 #if DEBUG
@@ -73,6 +116,20 @@ func getBlockLogs() -> [BlockLog] {
     return blockLogs
 }
 
+fileprivate extension UserDefaults {
+    
+    @objc
+    dynamic var LockdownDayLogs: [Any]? {
+        get {
+            assert(#function == kDayLogs)
+            return array(forKey: kDayLogs)
+        }
+        set {
+            set(newValue, forKey: kDayLogs)
+        }
+    }
+}
+
 struct BlockLogRow: View {
     
     @State var blockLog: BlockLog
@@ -81,7 +138,7 @@ struct BlockLogRow: View {
         VStack (alignment: .leading, spacing: 0.0) {
             HStack {
                 Text(blockLog.time)
-                .font(cFontSmall)
+                .font(cFontSmall.monospacedDigit())
                 .multilineTextAlignment(.leading)
                     .padding(.leading, 8.0)
                 .padding(.vertical, 0)
