@@ -9,7 +9,6 @@ fitanalytics.com
 localytics.com
 mob.com
 mtrtb.com
-mxpnl.com
 newrelic.com
 nr-data.net
 play.googleapis.com
@@ -20,3 +19,5 @@ umeng.com
 umengcloud.com
 voicefive.com
 segment.io
+api.myendpoint.io
+bin5y4muil.execute-api.us-east-1.amazonaws.com

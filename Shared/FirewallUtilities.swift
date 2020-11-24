@@ -244,7 +244,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let dataTrackers = LockdownGroup.init(
-        version: 30,
+        version: 33,
         internalID: "data_trackers",
         name: "Data Trackers",
         iconURL: "user_data_icon",
@@ -262,7 +262,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let reporting = LockdownGroup.init(
-        version: 27,
+        version: 29,
         internalID: "reporting",
         name: "Reporting",
         iconURL: "reporting_icon",
@@ -515,6 +515,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "digicert.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "disney-plus.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "disneyplus.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "ebtedge.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "firstdata.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "go.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hbc.com")
@@ -528,16 +529,24 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "kroger.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "letsencrypt.org")
     addLockdownWhitelistedDomainIfNotExists(domain: "lowes.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "lync.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "marcopolo.me")
+    addLockdownWhitelistedDomainIfNotExists(domain: "mbanking-services.mobi")
+    addLockdownWhitelistedDomainIfNotExists(domain: "microsoft.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "mobile.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "mzstatic.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "netflix.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "nflxvideo.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "office.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "office.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "office365.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "outlook.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "quibi.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "saks.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "saksfifthavenue.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "skype.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "skypeforbusiness.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "slickdeals.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "southwest.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "spotify.com")
