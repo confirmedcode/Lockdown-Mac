@@ -190,7 +190,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let facebookInc = LockdownGroup.init(
-        version: 30,
+        version: 31,
         internalID: "facebook_inc",
         name: "Facebook & WhatsApp",
         iconURL: "facebook_icon",
@@ -199,7 +199,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let facebookSDK = LockdownGroup.init(
-        version: 26,
+        version: 27,
         internalID: "facebook_sdk",
         name: "Facebook Trackers",
         iconURL: "facebook_white_icon",

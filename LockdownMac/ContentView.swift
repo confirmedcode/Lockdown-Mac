@@ -450,17 +450,21 @@ struct ContentView: View {
                         else if let apiError = error as? ApiError {
                             switch apiError.code {
                             case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                                DDLogError("No-active-subscription error for email: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")")
                                 self.errorTitle = "No Active Subscription"
                                 self.errorMessage = "Check that you are subscribed to Lockdown Secure Tunnel on your iPhone or iPad and that it's connected with the account: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")"
                             case kApiCodeMobileSubscriptionOnly:
+                                DDLogError("Mobile-subscription-only error for email: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")")
                                 self.errorTitle = "Upgrade Subscription"
-                                self.errorMessage = "Your Secure Tunnel subscription on the account \((getAPICredentials() != nil) ? getAPICredentials()!.email : "") is only valid for iPhone and iPad.\n\nUpgrade to a Pro subscription to enable Mac:\n\n1) Open Settings app\n2) Tap [Your Name]\n3) Tap Subscriptions\n4) Tap Lockdown\n5) Choose a monthly/annual Pro plan\n6) Open Lockdown on iPhone/iPad\n7) Turn the Secure Tunnel Off, Then On\n\nThis process syncs your subscription between Lockdown Mac and iOS. For any questions, email support at team@lockdownhq.com."
+                                self.errorMessage = "Your Secure Tunnel subscription on the account \((getAPICredentials() != nil) ? getAPICredentials()!.email : "") is only valid for iPhone and iPad.\n\nUpgrade to a Pro subscription to enable Mac:\n\n1) Open Lockdown on iPhone/iPad\n2) Tap 'Account' on the bottom right\n3) Make sure you're signed in with the same email address as above\n4) Tap 'View or Upgrade Plan' to upgrade to a Pro plan.\n5) Tap 'Protect' on the bottom left.\n6) Turn off and turn on Secure Tunnel.\n\nThis process syncs your subscription between Lockdown Mac and iOS. For any questions, email support at team@lockdownhq.com."
                             default:
+                                DDLogError("unexpected API error \(apiError.localizedDescription) code \(apiError.code) for email: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")")
                                 self.errorTitle = "Unexpected API Error"
                                 self.errorMessage = "Message: \(apiError.localizedDescription)\nCode: \(apiError.code)\nIf this persists, please contact team@lockdownhq.com."
                             }
                         }
                         else {
+                            DDLogError("unexpected error \(error.localizedDescription) for email: \((getAPICredentials() != nil) ? getAPICredentials()!.email : "")")
                             self.errorTitle = "Unexpected Error"
                             self.errorMessage = "Message: \(error.localizedDescription)\nIf this persists, please contact team@lockdownhq.com."
                         }

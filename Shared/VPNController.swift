@@ -188,8 +188,9 @@ class VPNController: NSObject {
             onDemandRules.append(connectRule)
             manager.onDemandRules = onDemandRules
 
-            DDLogInfo("VPN status before loading: \(self.manager.connection.status)")
+            DDLogInfo("VPN status before loading: \(self.manager.connection.status.rawValue)")
             self.manager.localizedDescription! = kVPNLocalizedDescription
+
             self.manager.saveToPreferences(completionHandler: {(_ error: Error?) -> Void in
                 if let e = error {
                     DDLogError("Saving VPN Error \(e)")

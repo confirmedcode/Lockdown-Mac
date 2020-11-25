@@ -23,6 +23,8 @@ struct EmailLoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @State private var isLoading: Bool = false
+    
     @State private var errorText: String = ""
     
     var body: some View {
@@ -32,14 +34,14 @@ struct EmailLoginView: View {
             Text("Login To Lockdown")
                 .font(cFontTitle)
                 .padding(.vertical, 10)
-            Text("Create an account with Lockdown on your iPhone/iPad to enable Secure Tunnel. In the app, tap \"☰\" at the top left, then \"Sign Up\".\n\nMake sure you're on the latest version of Lockdown iOS.")
+            Text("Create an account using Lockdown on your iPhone/iPad to enable Secure Tunnel. Open Lockdown on your iPhone/iPad and tap \"Account\" at the bottom right, then \"Sign Up\".")
                 .font(cFontRegularSmall)
                 .padding(.horizontal, 10)
                 .padding(.bottom, 12)
                 .multilineTextAlignment(.center)
             
             Text(errorText)
-                .font(cFontSubtitle2)
+                .font(cFontSmall)
                 .lineLimit(nil)
                 .frame(minWidth: 0, maxWidth: 300, minHeight: errorText == "" ? 0 : 30)
                 .foregroundColor(Color.flatRed)
@@ -65,7 +67,7 @@ struct EmailLoginView: View {
                     .foregroundColor(.gray)
                     .frame(width: 60, alignment: .trailing)
                 SecureField("**********", text: $password, onCommit: {
-                        self.setCredentials()
+                        //self.setCredentials()
                     })
                     .lineLimit(1)
                     .font(cFontRegular)
@@ -95,30 +97,52 @@ struct EmailLoginView: View {
                     .frame(width: 80, height: 30)
                 }
                 .buttonStyle(BlueButtonStyle())
+                .disabled(isLoading)
                 .cornerRadius(8)
                 .padding(8)
             }
         }
-        .frame(width: 300, height: 310)
+        .frame(width: 300, height: 290)
         .padding(10)
     }
     
     func setCredentials() {
-        try? setAPICredentials(email: self.email, password: self.password)
+        if (email.isEmpty) {
+            self.errorText = "Email cannot be blank."
+            return
+        }
+        else if (password.isEmpty) {
+            self.errorText = "Password cannot be blank."
+            return
+        }
+        
+        do {
+            try setAPICredentials(email: self.email, password: self.password)
+        }
+        catch {
+            self.errorText = "Error setting credentials: \(error)"
+            return
+        }
+        
+        isLoading = true
         
         firstly {
             try Client.signInWithEmail()
         }
         .done { (signin: SignIn) in
+            isLoading = false
             self.presentationMode.wrappedValue.dismiss()
             self.successCallback()
         }
         .catch { error in
+            isLoading = false
             clearAPICredentials()
             if (error as NSError).domain == NSURLErrorDomain {
+                DDLogError("Login-error - Network Error. Please check your connection. Code \((error as NSError).code)")
                 self.errorText = "Network Error. Please check your connection. Code \((error as NSError).code)"
             }
             else if let apiError = error as? ApiError {
+                DDLogError("Login-error - API Error code \(apiError.code), message \(apiError.message).")
                 switch (apiError.code) {
                     case kApiCodeIncorrectLogin:
                         self.errorText = "Incorrect Login."
@@ -131,6 +155,7 @@ struct EmailLoginView: View {
                 }
             }
             else {
+                DDLogError("Login-error - Unexpected error: \(error.localizedDescription)")
                 self.errorText = "Unexpected error: \(error.localizedDescription)"
             }
         }
