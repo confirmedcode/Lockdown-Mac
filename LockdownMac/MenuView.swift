@@ -10,23 +10,39 @@ import Foundation
 import SwiftUI
 import CocoaLumberjackSwift
 
+func getEmailTopText() -> String {
+    return (getAPICredentials() != nil) ? getAPICredentials()!.email : "Not Signed In\nSign Up With Lockdown iOS"
+}
+
+func getEmailSignInText() -> String {
+    return (getAPICredentials() != nil) ? "Sign Out" : "Sign In"
+}
+
 struct MenuView: View {
     
     @ObservedObject var userDefaultsManager = UserDefaultsManager()
-    @State var refreshViewValue = 0
     @State private var showEmailLogin: Bool = false
+    
+    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
+    @State var emailTopText = getEmailTopText()
+    @State var emailSignInText = getEmailSignInText()
     
     var body: some View {
         
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text("\((getAPICredentials() != nil) ? getAPICredentials()!.email : "Not Signed In\nSign Up With Lockdown iOS")")
+                Text("\(emailTopText)")
                     .font(cFontSubtitle2)
                     .padding(.leading, 10)
                     .multilineTextAlignment(.center)
                     .frame(height: 28)
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .minimumScaleFactor(0.5)
+                    .onReceive(timer) { _ in
+                        print("=============== MENU TIMER FIRED")
+                        self.emailTopText = getEmailTopText()
+                        self.emailSignInText = getEmailSignInText()
+                    }
                 Button(
                     action: {
                         if (getAPICredentials() != nil) {
@@ -34,15 +50,12 @@ struct MenuView: View {
                                 VPNController.shared.setEnabled(false)
                             }
                             clearAPICredentials()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self.refreshViewValue = self.refreshViewValue + 1
-                            }
                         }
                         else {
                             self.showEmailLogin = true
                         }
                 }) {
-                    Text((getAPICredentials() != nil) ? "Sign Out" : "Sign In")
+                    Text("\(emailSignInText)")
                         .font(cFontSubtitle)
                         .frame(width: 70, height: 30)
                 }
@@ -167,7 +180,6 @@ struct MenuView: View {
             .popover(isPresented: self.$showEmailLogin) {
                 EmailLoginView(successCallback: {
                     DDLogInfo("success callback")
-                    self.refreshViewValue = self.refreshViewValue + 1
                 } )
             }
             
