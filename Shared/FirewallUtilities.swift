@@ -244,7 +244,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let dataTrackers = LockdownGroup.init(
-        version: 33,
+        version: 34,
         internalID: "data_trackers",
         name: "Data Trackers",
         iconURL: "user_data_icon",
