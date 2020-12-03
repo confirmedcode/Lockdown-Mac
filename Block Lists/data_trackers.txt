@@ -6,7 +6,7 @@ bluekai.com
 chartboost.com
 flurry.com
 fitanalytics.com
-localytics.com
+analytics.localytics.com
 mob.com
 mtrtb.com
 newrelic.com
@@ -21,3 +21,4 @@ voicefive.com
 segment.io
 api.myendpoint.io
 bin5y4muil.execute-api.us-east-1.amazonaws.com
+smart-sense.org
