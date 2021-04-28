@@ -243,17 +243,17 @@ struct ContentView: View {
                     .background(vpnState.color)
                     .cornerRadius(3)
                 Spacer()
-                Text("VIEW AUDIT REPORT")
+                Text("VIEW OPENAUDIT REPORT")
                     .frame(width: 200, height: 18)
                     .font(cFontSmall)
                     .foregroundColor(Color.lightGray)
                 Button(action: {
-                    let url = URL(string: "https://openlyoperated.org/report/confirmedvpn")!
+                    let url = URL(string: "https://openaudit.com/lockdownprivacy")!
                     if NSWorkspace.shared.open(url) {
                         DDLogInfo("audit report opened")
                     }
                 }) {
-                    Text("July 23rd, 2020")
+                    Text("April 2021")
                         .font(cFontSubtitle2)
                         .foregroundColor(Color.confirmedBlue)
                         .frame(width: 150, height: 18)
