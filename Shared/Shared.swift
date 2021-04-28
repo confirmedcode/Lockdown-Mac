@@ -57,6 +57,7 @@ let sfProRoundedSemiBold28 = Font.custom("SFProRounded-SemiBold", size: 28)
 extension Color {
     static let confirmedBlue = Color(red: 0/255.0, green: 173/255.0, blue: 231/255.0)
     static let panelBackground = Color("Panel Background")
+    static let powerButtonBackground = Color("Power Button Background")
     static let mainBackground = Color("Main Background")
     
     static let lightGray = Color(NSColor.lightGray)

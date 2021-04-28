@@ -63,16 +63,18 @@ struct LoadingCircle: View {
                 .frame(width: 100, height: 100)
                 .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.35), radius: 4, x: 3.5, y: 3.5)
                 .padding(4)
-                .foregroundColor(Color.panelBackground)
+                .foregroundColor(Color.powerButtonBackground)
                 .background(Color.panelBackground)
                 .zIndex(1)
             Button(
                 action: {
                     self.toggleTapped()
                 }) {
-                    Image("power_button")
+                    Image("power")
+                    .antialiased(true)
+                    .interpolation(.high)
                     .resizable()
-                    .padding(19)
+                    .padding(16)
                     .foregroundColor(tunnelState.circleColor)
                     .frame(width: 100, height: 100)
                 }
