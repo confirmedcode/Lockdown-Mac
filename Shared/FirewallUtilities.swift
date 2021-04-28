@@ -253,7 +253,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let generalAds = LockdownGroup.init(
-        version: 38,
+        version: 40,
         internalID: "general_ads",
         name: "General Marketing",
         iconURL: "ads_icon",
@@ -270,6 +270,15 @@ func setupFirewallDefaultBlockLists() {
         domains: getDomainBlockList(filename: "reporting"),
         ipRanges: [:])
     
+    let amazonTrackers = LockdownGroup.init(
+        version: 33,
+        internalID: "amazon_trackers",
+        name: NSLocalizedString("Amazon Trackers", comment: "The title of a list of trackers"),
+        iconURL: "amazon_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "amazon_trackers"),
+        ipRanges: [:])
+    
     let defaultLockdownSettings = [snapchatAnalytics,
                                    gameAds,
                                    clickbait,
@@ -283,7 +292,8 @@ func setupFirewallDefaultBlockLists() {
                                    googleShoppingAds,
                                    dataTrackers,
                                    generalAds,
-                                   reporting];
+                                   reporting,
+                                   amazonTrackers];
     
     for var defaultGroup in defaultLockdownSettings {
         if let current = lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID], current.version >= defaultGroup.version {
@@ -501,9 +511,11 @@ func addUserWhitelistedDomain(domain: String) {
 }
 
 func setupLockdownWhitelistedDomains() {
+    addLockdownWhitelistedDomainIfNotExists(domain: "3stripes.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "aiv-cdn.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "akamaihd.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "akamaized.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "ally.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "amazon.com") // This domain is not used for tracking (the tracker amazon-adsystem.com is blocked), but it does sometimes stop Secure Tunnel VPN users from viewing Amazon reviews. Users may un-whitelist this if they wish.
     addLockdownWhitelistedDomainIfNotExists(domain: "api.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "apple-cloudkit.com")
@@ -540,9 +552,11 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "gamestop.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "go.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "googlevideo.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "grindr.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hbc.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hbo.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hbomax.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "hotstar.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "houzz.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hulu.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "huluim.com")
@@ -555,6 +569,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "marcopolo.me")
     addLockdownWhitelistedDomainIfNotExists(domain: "mbanking-services.mobi")
+    addLockdownWhitelistedDomainIfNotExists(domain: "meijer.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "microsoft.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "microsoftonline.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "mobile.twitter.com")

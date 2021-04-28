@@ -68,6 +68,7 @@
 		3D96CD1223986232007F5C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D96CD11239861D7007F5C3C /* Main.storyboard */; };
 		3D96CD8223989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
 		3D96CD8323989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
+		3D99DB7A26392FF90005CDB6 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DA56404263927E300C9D606 /* amazon_trackers.txt */; };
 		3DC605E623EE3BD900B30DB3 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */; };
 		3DD1907D2436B81300DFC597 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD1907C2436B81300DFC597 /* KeychainAccess */; };
 		A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1769109207FCD1F00CAF05C /* NetworkExtension.framework */; };
@@ -180,6 +181,7 @@
 		3D96CD0F23984C48007F5C3C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D96CD11239861D7007F5C3C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3D96CD8123989350007F5C3C /* FirewallUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallUtilities.swift; sourceTree = "<group>"; };
+		3DA56404263927E300C9D606 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
 		3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLogger.swift; sourceTree = "<group>"; };
 		A1769104207FA2F600CAF05C /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		A1769109207FCD1F00CAF05C /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -303,6 +305,7 @@
 				3D549AD2251B0DF200AD5386 /* facebook_sdk.txt */,
 				3D549AD8251B0DF300AD5386 /* game_ads.txt */,
 				3D549ACE251B0DF200AD5386 /* general_ads.txt */,
+				3DA56404263927E300C9D606 /* amazon_trackers.txt */,
 				3D549AD5251B0DF200AD5386 /* google_shopping_ads.txt */,
 				3D549ACB251B0DF200AD5386 /* marketing_beta.txt */,
 				3D549AD6251B0DF200AD5386 /* marketing.txt */,
@@ -560,6 +563,7 @@
 				3D549ADE251B0DF300AD5386 /* snapchat_analytics.txt in Resources */,
 				3D549ADC251B0DF300AD5386 /* general_ads.txt in Resources */,
 				3D549AE1251B0DF300AD5386 /* facebook_inc.txt in Resources */,
+				3D99DB7A26392FF90005CDB6 /* amazon_trackers.txt in Resources */,
 				3D549AE2251B0DF300AD5386 /* data_trackers.txt in Resources */,
 				3D7BAEC423D1165400CF5299 /* Montserrat-Bold.ttf in Resources */,
 				3D549AE6251B0DF300AD5386 /* game_ads.txt in Resources */,
