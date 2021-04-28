@@ -211,10 +211,10 @@ struct ContentView: View {
                 Spacer()
                 
                 LoadingCircle(toggleTapped: {
-                    if (toggleVPNinProgress == true) {
-                        DDLogInfo("toggle VPN in progress, ignoring click")
-                    }
-                    else {
+//                    if (toggleVPNinProgress == true) {
+//                        DDLogInfo("toggle VPN in progress, ignoring click")
+//                    }
+//                    else {
                         DDLogInfo("toggle VPN")
                         // get creds if we don't have it
                         if getAPICredentials() == nil {
@@ -223,7 +223,7 @@ struct ContentView: View {
                         else {
                             self.toggleVPN()
                         }
-                    }
+                   // }
                 }, tunnelState: vpnState)
                 .frame(width: 100, height: 100)
                 .padding(4)
