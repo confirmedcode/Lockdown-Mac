@@ -330,7 +330,7 @@ struct ContentView: View {
             }
         }
         .alert(isPresented: $showingPrivacyPolicyAlert) {
-            Alert(title: Text("Your Privacy Comes First"), message: Text("Lockdown's Privacy Policy is simple:\n\nEverything Lockdown Firewall does stays on your device, and what you see is what you get — nothing more or less — because that's the way it should be.\n\nFor more details, visit https://lockdownhq.com/privacy\n\nClick 'Agree' to continue."), primaryButton: .default(Text("Agree")) {
+            Alert(title: Text("Your Privacy Comes First"), message: Text("Lockdown's Privacy Policy is simple:\n\nEverything Lockdown Firewall does stay on your device, and what you see is what you get — nothing more or less — because that's the way it should be.\n\nFor more details, visit https://lockdownhq.com/privacy\n\nClick 'Agree' to continue."), primaryButton: .default(Text("Agree")) {
                     NotificationCenter.default.post(name: .togglePopoverOn, object: nil)
                     defaults.set(true, forKey: kHasAgreedToFirewallPrivacyPolicy)
                 }, secondaryButton: .cancel(Text("Quit")) {
