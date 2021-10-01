@@ -7,6 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D05FF4626CCAF4400C5A26B /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4326CCAF4400C5A26B /* NEKit.xcframework */; };
+		3D05FF4726CCAF4400C5A26B /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4326CCAF4400C5A26B /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF4826CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4426CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework */; };
+		3D05FF4926CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4426CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF4D26CCAF5F00C5A26B /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4326CCAF4400C5A26B /* NEKit.xcframework */; };
+		3D05FF4E26CCAF5F00C5A26B /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4326CCAF4400C5A26B /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF5626CCAF8000C5A26B /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5026CCAF8000C5A26B /* Yaml.xcframework */; };
+		3D05FF5726CCAF8000C5A26B /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5026CCAF8000C5A26B /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF5826CCAF8000C5A26B /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */; };
+		3D05FF5926CCAF8000C5A26B /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF5A26CCAF8000C5A26B /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5226CCAF8000C5A26B /* lwip.xcframework */; };
+		3D05FF5B26CCAF8000C5A26B /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5226CCAF8000C5A26B /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF5C26CCAF8000C5A26B /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */; };
+		3D05FF5D26CCAF8000C5A26B /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF5E26CCAF8000C5A26B /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */; };
+		3D05FF5F26CCAF8000C5A26B /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6026CCAF8000C5A26B /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; };
+		3D05FF6126CCAF8000C5A26B /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6226CCAF9300C5A26B /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */; };
+		3D05FF6326CCAF9300C5A26B /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6426CCAF9300C5A26B /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5226CCAF8000C5A26B /* lwip.xcframework */; };
+		3D05FF6526CCAF9300C5A26B /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5226CCAF8000C5A26B /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6626CCAF9300C5A26B /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; };
+		3D05FF6726CCAF9300C5A26B /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6826CCAF9300C5A26B /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */; };
+		3D05FF6926CCAF9300C5A26B /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6A26CCAF9300C5A26B /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */; };
+		3D05FF6B26CCAF9300C5A26B /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6C26CCAF9300C5A26B /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5026CCAF8000C5A26B /* Yaml.xcframework */; };
+		3D05FF6D26CCAF9300C5A26B /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5026CCAF8000C5A26B /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF6E26CCAF9700C5A26B /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4426CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework */; };
+		3D05FF6F26CCAF9700C5A26B /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4426CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D05FF7026CCAFC700C5A26B /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4526CCAF4400C5A26B /* CocoaLumberjack.xcframework */; };
+		3D05FF7126CCAFC700C5A26B /* CocoaLumberjack.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF4526CCAF4400C5A26B /* CocoaLumberjack.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D1AF4EB23D833160097341B /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AF4EA23D833160097341B /* LoadingCircle.swift */; };
 		3D31C17523D008980039F0D7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D31C17423D008980039F0D7 /* Environment.swift */; };
 		3D31C17623D008980039F0D7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D31C17423D008980039F0D7 /* Environment.swift */; };
@@ -29,8 +63,6 @@
 		3D5F3ED1237E245700E0AC34 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F3ED0237E245700E0AC34 /* FirewallController.swift */; };
 		3D5F3EDA237E26BA00E0AC34 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F3ED9237E26BA00E0AC34 /* PacketTunnelProvider.swift */; };
 		3D5F3EDF237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3D5F3ED7237E26BA00E0AC34 /* Lockdown Mac Tunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3D5F3EE3237E347B00E0AC34 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BA1EBD2072C15D00DADDEC /* NEKit.framework */; };
-		3D5F3EE4237E347B00E0AC34 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1BA1EBD2072C15D00DADDEC /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D6649AB23D2BA8400389AE3 /* LockdownObserverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6649AA23D2BA8400389AE3 /* LockdownObserverFactory.swift */; };
 		3D6649AC23D2BA8400389AE3 /* LockdownObserverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6649AA23D2BA8400389AE3 /* LockdownObserverFactory.swift */; };
 		3D6649AE23D2BAFD00389AE3 /* BlockMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6649AD23D2BAFD00389AE3 /* BlockMetricsView.swift */; };
@@ -72,12 +104,9 @@
 		3DC605E623EE3BD900B30DB3 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */; };
 		3DD1907D2436B81300DFC597 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD1907C2436B81300DFC597 /* KeychainAccess */; };
 		A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1769109207FCD1F00CAF05C /* NetworkExtension.framework */; };
-		A153438920E6C5DD002762B6 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BA1EBD2072C15D00DADDEC /* NEKit.framework */; };
 		A1769105207FA2F600CAF05C /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = A1769104207FA2F600CAF05C /* LICENSE.md */; };
 		A19192171F44E8390071FF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19192161F44E8390071FF62 /* AppDelegate.swift */; };
 		A191921B1F44E8390071FF62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A191921A1F44E8390071FF62 /* Assets.xcassets */; };
-		A1D1F84720C1B11900CC5B02 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BA1EBE2072C15D00DADDEC /* CocoaLumberjack.framework */; };
-		A1D1F84820C1B11900CC5B02 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BA1EBF2072C15D00DADDEC /* CocoaLumberjackSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,13 +120,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3D5F3EE5237E347B00E0AC34 /* Embed Frameworks */ = {
+		3D05FF4C26CCAF4400C5A26B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3D5F3EE4237E347B00E0AC34 /* NEKit.framework in Embed Frameworks */,
+				3D05FF5F26CCAF8000C5A26B /* tun2socks.xcframework in Embed Frameworks */,
+				3D05FF5B26CCAF8000C5A26B /* lwip.xcframework in Embed Frameworks */,
+				3D05FF5D26CCAF8000C5A26B /* Resolver.xcframework in Embed Frameworks */,
+				3D05FF7126CCAFC700C5A26B /* CocoaLumberjack.xcframework in Embed Frameworks */,
+				3D05FF4926CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
+				3D05FF5726CCAF8000C5A26B /* Yaml.xcframework in Embed Frameworks */,
+				3D05FF5926CCAF8000C5A26B /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
+				3D05FF4726CCAF4400C5A26B /* NEKit.xcframework in Embed Frameworks */,
+				3D05FF6126CCAF8000C5A26B /* MMDB.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D05FF4F26CCAF5F00C5A26B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3D05FF6D26CCAF9300C5A26B /* Yaml.xcframework in Embed Frameworks */,
+				3D05FF4E26CCAF5F00C5A26B /* NEKit.xcframework in Embed Frameworks */,
+				3D05FF6F26CCAF9700C5A26B /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
+				3D05FF6526CCAF9300C5A26B /* lwip.xcframework in Embed Frameworks */,
+				3D05FF6B26CCAF9300C5A26B /* tun2socks.xcframework in Embed Frameworks */,
+				3D05FF6926CCAF9300C5A26B /* Resolver.xcframework in Embed Frameworks */,
+				3D05FF6326CCAF9300C5A26B /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
+				3D05FF6726CCAF9300C5A26B /* MMDB.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +181,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D05FF4326CCAF4400C5A26B /* NEKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NEKit.xcframework; path = Carthage/Build/NEKit.xcframework; sourceTree = "<group>"; };
+		3D05FF4426CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
+		3D05FF4526CCAF4400C5A26B /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
+		3D05FF5026CCAF8000C5A26B /* Yaml.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Yaml.xcframework; path = Carthage/Build/Yaml.xcframework; sourceTree = "<group>"; };
+		3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = Carthage/Build/CocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
+		3D05FF5226CCAF8000C5A26B /* lwip.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = lwip.xcframework; path = Carthage/Build/lwip.xcframework; sourceTree = "<group>"; };
+		3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Resolver.xcframework; path = Carthage/Build/Resolver.xcframework; sourceTree = "<group>"; };
+		3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tun2socks.xcframework; path = Carthage/Build/tun2socks.xcframework; sourceTree = "<group>"; };
+		3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MMDB.xcframework; path = Carthage/Build/MMDB.xcframework; sourceTree = "<group>"; };
 		3D1AF4EA23D833160097341B /* LoadingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
 		3D31C17423D008980039F0D7 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3D4366FB23D3C16C0011A461 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
@@ -209,9 +273,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DD1907D2436B81300DFC597 /* KeychainAccess in Frameworks */,
+				3D05FF6426CCAF9300C5A26B /* lwip.xcframework in Frameworks */,
 				3D8ED4BC239A2322003F487E /* CloudKit.framework in Frameworks */,
-				3D5F3EE3237E347B00E0AC34 /* NEKit.framework in Frameworks */,
 				3D8A1F51237F74B30019AAE2 /* NetworkExtension.framework in Frameworks */,
+				3D05FF6226CCAF9300C5A26B /* CocoaAsyncSocket.xcframework in Frameworks */,
+				3D05FF6A26CCAF9300C5A26B /* tun2socks.xcframework in Frameworks */,
+				3D05FF6E26CCAF9700C5A26B /* CocoaLumberjackSwift.xcframework in Frameworks */,
+				3D05FF6C26CCAF9300C5A26B /* Yaml.xcframework in Frameworks */,
+				3D05FF6826CCAF9300C5A26B /* Resolver.xcframework in Frameworks */,
+				3D05FF6626CCAF9300C5A26B /* MMDB.xcframework in Frameworks */,
+				3D05FF4D26CCAF5F00C5A26B /* NEKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,14 +297,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A153438920E6C5DD002762B6 /* NEKit.framework in Frameworks */,
+				3D05FF5626CCAF8000C5A26B /* Yaml.xcframework in Frameworks */,
+				3D05FF5C26CCAF8000C5A26B /* Resolver.xcframework in Frameworks */,
 				3D7BAED023D15CB700CF5299 /* PMKFoundation in Frameworks */,
 				3D31C17A23D00AF10039F0D7 /* PromiseKit in Frameworks */,
-				A1D1F84720C1B11900CC5B02 /* CocoaLumberjack.framework in Frameworks */,
-				A1D1F84820C1B11900CC5B02 /* CocoaLumberjackSwift.framework in Frameworks */,
+				3D05FF5826CCAF8000C5A26B /* CocoaAsyncSocket.xcframework in Frameworks */,
+				3D05FF6026CCAF8000C5A26B /* MMDB.xcframework in Frameworks */,
 				3D929E972421544300BF397F /* ServiceManagement.framework in Frameworks */,
+				3D05FF7026CCAFC700C5A26B /* CocoaLumberjack.xcframework in Frameworks */,
+				3D05FF5A26CCAF8000C5A26B /* lwip.xcframework in Frameworks */,
+				3D05FF5E26CCAF8000C5A26B /* tun2socks.xcframework in Frameworks */,
+				3D05FF4826CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */,
 				3D82878B23D0064300DFFFC2 /* KeychainAccess in Frameworks */,
+				3D05FF4626CCAF4400C5A26B /* NEKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +444,15 @@
 		A19192431F45249C0071FF62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */,
+				3D05FF5226CCAF8000C5A26B /* lwip.xcframework */,
+				3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */,
+				3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */,
+				3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */,
+				3D05FF5026CCAF8000C5A26B /* Yaml.xcframework */,
+				3D05FF4526CCAF4400C5A26B /* CocoaLumberjack.xcframework */,
+				3D05FF4426CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework */,
+				3D05FF4326CCAF4400C5A26B /* NEKit.xcframework */,
 				3D929E962421544200BF397F /* ServiceManagement.framework */,
 				3D8ED4BB239A2322003F487E /* CloudKit.framework */,
 				A1769109207FCD1F00CAF05C /* NetworkExtension.framework */,
@@ -395,7 +481,7 @@
 				3D5F3ED3237E26BA00E0AC34 /* Sources */,
 				3D5F3ED4237E26BA00E0AC34 /* Frameworks */,
 				3D5F3ED5237E26BA00E0AC34 /* Resources */,
-				3D5F3EE5237E347B00E0AC34 /* Embed Frameworks */,
+				3D05FF4F26CCAF5F00C5A26B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -436,8 +522,8 @@
 				A19192101F44E8390071FF62 /* Frameworks */,
 				A19192111F44E8390071FF62 /* Resources */,
 				A1BA1EB92072C05A00DADDEC /* Embed App Extensions */,
-				A1D1F84920C1B13E00CC5B02 /* ShellScript */,
 				3D929E942421541E00BF397F /* CopyFiles */,
+				3D05FF4C26CCAF4400C5A26B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -587,27 +673,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		A1D1F84920C1B13E00CC5B02 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/CocoaLumberjackSwift.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/CocoaLumberjack.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/NEKit.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/Resolver.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/CocoaAsyncSocket.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		3D5F3ED3237E26BA00E0AC34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -689,7 +754,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -704,7 +769,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
@@ -726,7 +791,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -741,7 +806,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.5;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -764,7 +829,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -773,7 +838,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
@@ -796,7 +861,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -805,7 +870,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.5;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownMacLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -933,7 +998,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -947,7 +1012,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -967,7 +1032,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -980,7 +1045,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
