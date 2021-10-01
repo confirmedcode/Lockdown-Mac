@@ -217,7 +217,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScriptsII = LockdownGroup.init(
-        version: 27,
+        version: 30,
         internalID: "marketing_beta_scripts",
         name: "Marketing Trackers II",
         iconURL: "marketing_icon",
@@ -517,6 +517,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "akamaized.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "ally.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "amazon.com") // This domain is not used for tracking (the tracker amazon-adsystem.com is blocked), but it does sometimes stop Secure Tunnel VPN users from viewing Amazon reviews. Users may un-whitelist this if they wish.
+    addLockdownWhitelistedDomainIfNotExists(domain: "americanexpress.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "api.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "apple-cloudkit.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "apple.com")
@@ -533,8 +534,8 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "cbsi.video")
     addLockdownWhitelistedDomainIfNotExists(domain: "cbsnews.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cdn-apple.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "chase.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "citi.com")
-    addLockdownWhitelistedDomainIfNotExists(domain: "cloudfront.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "cloudfront.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "coinbase.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "comcast.net")
@@ -569,6 +570,9 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "lync.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "marcopolo.me")
+    addLockdownWhitelistedDomainIfNotExists(domain: "mastercard.ca")
+    addLockdownWhitelistedDomainIfNotExists(domain: "mastercard.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "mastercard.us")
     addLockdownWhitelistedDomainIfNotExists(domain: "mbanking-services.mobi")
     addLockdownWhitelistedDomainIfNotExists(domain: "me.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "meijer.com")
@@ -602,6 +606,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "spotify.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "stan.com.au")
     addLockdownWhitelistedDomainIfNotExists(domain: "stan.video")
+    addLockdownWhitelistedDomainIfNotExists(domain: "stripe.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "syncbak.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "t.co")
     addLockdownWhitelistedDomainIfNotExists(domain: "tapbots.com")
@@ -614,6 +619,8 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "uplynk.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "usbank.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "verisign.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "visa.ca")
+    addLockdownWhitelistedDomainIfNotExists(domain: "visa.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "vudu.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "xfinity.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "youtube.com")
