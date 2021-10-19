@@ -23,14 +23,10 @@
 		3D05FF5D26CCAF8000C5A26B /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D05FF5E26CCAF8000C5A26B /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */; };
 		3D05FF5F26CCAF8000C5A26B /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3D05FF6026CCAF8000C5A26B /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; };
-		3D05FF6126CCAF8000C5A26B /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D05FF6226CCAF9300C5A26B /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */; };
 		3D05FF6326CCAF9300C5A26B /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D05FF6426CCAF9300C5A26B /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5226CCAF8000C5A26B /* lwip.xcframework */; };
 		3D05FF6526CCAF9300C5A26B /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5226CCAF8000C5A26B /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3D05FF6626CCAF9300C5A26B /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; };
-		3D05FF6726CCAF9300C5A26B /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D05FF6826CCAF9300C5A26B /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */; };
 		3D05FF6926CCAF9300C5A26B /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5326CCAF8000C5A26B /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D05FF6A26CCAF9300C5A26B /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D05FF5426CCAF8000C5A26B /* tun2socks.xcframework */; };
@@ -134,7 +130,6 @@
 				3D05FF5726CCAF8000C5A26B /* Yaml.xcframework in Embed Frameworks */,
 				3D05FF5926CCAF8000C5A26B /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
 				3D05FF4726CCAF4400C5A26B /* NEKit.xcframework in Embed Frameworks */,
-				3D05FF6126CCAF8000C5A26B /* MMDB.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +147,6 @@
 				3D05FF6B26CCAF9300C5A26B /* tun2socks.xcframework in Embed Frameworks */,
 				3D05FF6926CCAF9300C5A26B /* Resolver.xcframework in Embed Frameworks */,
 				3D05FF6326CCAF9300C5A26B /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
-				3D05FF6726CCAF9300C5A26B /* MMDB.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +275,6 @@
 				3D05FF6E26CCAF9700C5A26B /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				3D05FF6C26CCAF9300C5A26B /* Yaml.xcframework in Frameworks */,
 				3D05FF6826CCAF9300C5A26B /* Resolver.xcframework in Frameworks */,
-				3D05FF6626CCAF9300C5A26B /* MMDB.xcframework in Frameworks */,
 				3D05FF4D26CCAF5F00C5A26B /* NEKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +295,6 @@
 				3D7BAED023D15CB700CF5299 /* PMKFoundation in Frameworks */,
 				3D31C17A23D00AF10039F0D7 /* PromiseKit in Frameworks */,
 				3D05FF5826CCAF8000C5A26B /* CocoaAsyncSocket.xcframework in Frameworks */,
-				3D05FF6026CCAF8000C5A26B /* MMDB.xcframework in Frameworks */,
 				3D929E972421544300BF397F /* ServiceManagement.framework in Frameworks */,
 				3D05FF7026CCAFC700C5A26B /* CocoaLumberjack.xcframework in Frameworks */,
 				3D05FF5A26CCAF8000C5A26B /* lwip.xcframework in Frameworks */,
@@ -754,7 +746,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -769,7 +761,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
@@ -791,7 +783,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Mac Tunnel/Lockdown_Mac_Tunnel.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -806,7 +798,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdownMac.Lockdown-Mac-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -998,7 +990,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1012,7 +1004,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1032,7 +1024,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1045,7 +1037,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdownMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
