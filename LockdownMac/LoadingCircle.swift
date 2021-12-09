@@ -45,8 +45,11 @@ struct LoadingCircle: View {
                         }
                         withAnimation(Animation.linear(duration: 1).delay(1).repeatForever(autoreverses: true))
                         {
-                            self.animateStrokeEnd.toggle()
+                            self.isRotating = false;
                         }
+                    }
+                    .onDisappear() {
+                        self.isRotating = true
                     }
                     .zIndex(10)
             }
