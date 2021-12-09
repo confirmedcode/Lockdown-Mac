@@ -397,7 +397,6 @@ struct ContentView: View {
         // flip the user preference
         let newVPNShouldBeConnectedStatus = !getUserWantsVPNEnabled()
         DDLogInfo("new UserWantsVPNEnabled: \(newVPNShouldBeConnectedStatus)")
-        setUserWantsVPNEnabled(newVPNShouldBeConnectedStatus)
         
         if (newVPNShouldBeConnectedStatus == true) {
             DDLogInfo("Toggle VPN: off currently, turning it on")
@@ -407,6 +406,13 @@ struct ContentView: View {
                 if error != nil {
                     DDLogError("Unable to turn off Firewall while toggling VPN, continuing")
                 }
+                
+                // force vpnState to show activating while the 1 second wait occurs
+                contentView?.vpnState.status = "ACTIVATING"
+                contentView?.vpnState.color = .confirmedBlue
+                contentView?.vpnState.circleColor = .confirmedBlue
+                contentView?.vpnState.isLoading = true
+                
                 // Wait 1 second
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     firstly {
@@ -430,6 +436,7 @@ struct ContentView: View {
                         
                         VPNController.shared.setEnabled(true, completion: {
                             success in
+                            setUserWantsVPNEnabled(newVPNShouldBeConnectedStatus)
                             if (hideAfterActivating) {
                                 NotificationCenter.default.post(name: .togglePopoverOff, object: nil)
                             }

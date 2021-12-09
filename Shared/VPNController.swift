@@ -95,6 +95,9 @@ class VPNController: NSObject {
                     self.manager.connection.stopVPNTunnel()
                     // TODO: will this ever error?
                     completion(error)
+                    if let e = error {
+                        DDLogInfo("Error on disabling VPN saving to preferences: \(e)")
+                    }
                 })
             })
         }
