@@ -151,8 +151,10 @@ class Client {
         var hasValidCookie = false
         if let cookies = HTTPCookieStorage.shared.cookies {
             DDLogInfo("found cookies")
+            DDLogInfo("cookie count: \(cookies.count)")
             for cookie in cookies {
-                DDLogInfo("cookie: \(cookie)")
+                DDLogInfo("cookie line 1")
+                //DDLogInfo("cookie: \(cookie)")
                 if let timeUntilExpire = cookie.expiresDate?.timeIntervalSinceNow {
                     DDLogInfo("time until expire: \(timeUntilExpire)")
                     if cookie.domain.contains(mainDomain) && timeUntilExpire > 120.0 {
