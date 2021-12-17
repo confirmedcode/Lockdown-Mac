@@ -70,6 +70,10 @@ struct ContentView: View {
                 .popover(isPresented: self.$showMenu) {
                     MenuView()
                 }
+                .onReceive(NotificationCenter.default.publisher(for: Notification.Name.hideMenu), perform: {
+                    a in
+                    self.showMenu = false
+                })
                 .zIndex(100)
                 Text("Lockdown")
                 .multilineTextAlignment(.center)

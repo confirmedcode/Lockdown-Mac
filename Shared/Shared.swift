@@ -21,6 +21,7 @@ extension Notification.Name {
     static let togglePopoverOn = Notification.Name("togglePopoverOn")
     static let togglePopoverOff = Notification.Name("togglePopoverOff")
     static let killLauncher = Notification.Name("killLauncher")
+    static let hideMenu = Notification.Name("hideMenu")
 }
 
 let launcherAppId = "com.confirmed.LockdownMacLauncher"

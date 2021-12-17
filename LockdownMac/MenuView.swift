@@ -162,7 +162,14 @@ struct MenuView: View {
         
             Button(
                 action: {
-                    NSApplication.shared.terminate(self)
+                    NotificationCenter.default.post(name: Notification.Name.hideMenu, object: nil, userInfo: nil)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        NotificationCenter.default.post(name: Notification.Name.togglePopoverOff, object: nil, userInfo: nil)
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        NSApplication.shared.terminate(self)
+                    }
             }) {
                 Text("Quit")
                     .font(cFontSubtitle2)
