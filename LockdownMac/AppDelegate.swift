@@ -156,8 +156,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         #if DEBUG
         #else
-        NSApplication.shared.activate(ignoringOtherApps: true)
-        self.togglePopover(nil)
+        // add delay for status button to render correctly, otherwise popover will be in the wrong place
+        if let button = self.statusBarItem.button {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            }
+        }
         #endif
         
         // Need this check otherwise the privacy policy dialog shows up twice
