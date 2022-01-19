@@ -167,7 +167,7 @@ struct MenuView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         NotificationCenter.default.post(name: Notification.Name.togglePopoverOff, object: nil, userInfo: nil)
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { timer in
                         NSApplication.shared.terminate(self)
                     }
             }) {

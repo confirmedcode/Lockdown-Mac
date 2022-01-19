@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct BlockListsView: View {
     
@@ -14,6 +15,8 @@ struct BlockListsView: View {
     
     var blockLists: [BlockList] = getLockdownBlockLists()
     @State var userBlockedDomains: [UserBlockedDomain] = getUserBlockedDomainsArray()
+    
+    @State private var forceRefresh: String = ""
     
     var body: some View {
 
@@ -54,6 +57,9 @@ struct BlockListsView: View {
                             // TODO: url checking
                             self.addDomain()
                         })
+                        .introspectTextField { textField in
+                            textField.becomeFirstResponder()
+                        }
                         Button(action: {
                             self.addDomain()
                         }) {
@@ -78,9 +84,10 @@ struct BlockListsView: View {
                                         if (getUserWantsVPNEnabled()) {
                                             VPNController.shared.restart()
                                         }
-                                        else {
+                                        else if (getUserWantsFirewallEnabled()) {
                                             FirewallController.shared.restart()
                                         }
+                                        forceRefresh = forceRefresh + "1"
                                 }) {
                                     Text(customDomain.enabled ? "Blocked" : "Not Blocked")
                                     .font(cFontSmall)
@@ -91,9 +98,10 @@ struct BlockListsView: View {
                                     if (getUserWantsVPNEnabled()) {
                                         VPNController.shared.restart()
                                     }
-                                    else {
+                                    else if (getUserWantsFirewallEnabled()) {
                                         FirewallController.shared.restart()
                                     }
+                                    forceRefresh = forceRefresh + "1"
                                 }) {
                                     Text("×")
                                         .padding(.bottom, 2)
@@ -114,6 +122,7 @@ struct BlockListsView: View {
             }
         }
         .frame(width: viewWidth * 1.9, height: viewHeight * 2/3)
+        .id(forceRefresh)
     }
     
     func addDomain() {
@@ -125,9 +134,10 @@ struct BlockListsView: View {
             if (getUserWantsVPNEnabled()) {
                 VPNController.shared.restart()
             }
-            else {
+            else if (getUserWantsFirewallEnabled()) {
                 FirewallController.shared.restart()
             }
+            forceRefresh = forceRefresh + "1"
         }
     }
     
@@ -145,6 +155,8 @@ struct BlockListRow: View {
     
     @State private var showDomains = false
     @State var blockList: BlockList
+    
+    @State private var forceRefresh: String = ""
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0.0) {
@@ -164,9 +176,10 @@ struct BlockListRow: View {
                         if (getUserWantsVPNEnabled()) {
                             VPNController.shared.restart()
                         }
-                        else {
+                        else if (getUserWantsFirewallEnabled()) {
                             FirewallController.shared.restart()
                         }
+                        forceRefresh = forceRefresh + "1"
                 }) {
                     Text(blockList.lockdownGroup.enabled ? "Blocked" : "Not Blocked")
                     .font(cFontSmall)
@@ -190,6 +203,7 @@ struct BlockListRow: View {
             .padding(.bottom, 8)
             Divider()
         }
+        .id(forceRefresh)
     }
     
 }

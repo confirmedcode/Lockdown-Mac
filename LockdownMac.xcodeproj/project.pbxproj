@@ -97,6 +97,7 @@
 		3D96CD8223989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
 		3D96CD8323989350007F5C3C /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D96CD8123989350007F5C3C /* FirewallUtilities.swift */; };
 		3D99DB7A26392FF90005CDB6 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DA56404263927E300C9D606 /* amazon_trackers.txt */; };
+		3DB0A1A02798B45200F02D15 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3DB0A19F2798B45200F02D15 /* Introspect */; };
 		3DC605E623EE3BD900B30DB3 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */; };
 		3DD1907D2436B81300DFC597 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD1907C2436B81300DFC597 /* KeychainAccess */; };
 		A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1769109207FCD1F00CAF05C /* NetworkExtension.framework */; };
@@ -240,6 +241,7 @@
 		3D96CD11239861D7007F5C3C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3D96CD8123989350007F5C3C /* FirewallUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallUtilities.swift; sourceTree = "<group>"; };
 		3DA56404263927E300C9D606 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
+		3DB0A19B2798AFC500F02D15 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		3DC605E523EE3BD900B30DB3 /* LocalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLogger.swift; sourceTree = "<group>"; };
 		A1769104207FA2F600CAF05C /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		A1769109207FCD1F00CAF05C /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -301,6 +303,7 @@
 				3D05FF5E26CCAF8000C5A26B /* tun2socks.xcframework in Frameworks */,
 				3D05FF4826CCAF4400C5A26B /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */,
+				3DB0A1A02798B45200F02D15 /* Introspect in Frameworks */,
 				3D82878B23D0064300DFFFC2 /* KeychainAccess in Frameworks */,
 				3D05FF4626CCAF4400C5A26B /* NEKit.xcframework in Frameworks */,
 			);
@@ -436,6 +439,7 @@
 		A19192431F45249C0071FF62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DB0A19B2798AFC500F02D15 /* SwiftUI.framework */,
 				3D05FF5126CCAF8000C5A26B /* CocoaAsyncSocket.xcframework */,
 				3D05FF5226CCAF8000C5A26B /* lwip.xcframework */,
 				3D05FF5526CCAF8000C5A26B /* MMDB.xcframework */,
@@ -527,6 +531,7 @@
 				3D82878A23D0064300DFFFC2 /* KeychainAccess */,
 				3D31C17923D00AF10039F0D7 /* PromiseKit */,
 				3D7BAECF23D15CB700CF5299 /* PMKFoundation */,
+				3DB0A19F2798B45200F02D15 /* Introspect */,
 			);
 			productName = TrustMac;
 			productReference = A19192131F44E8390071FF62 /* Lockdown.app */;
@@ -599,6 +604,7 @@
 				3D82878923D0064300DFFFC2 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				3D31C17823D00AF10039F0D7 /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				3D7BAECE23D15CB700CF5299 /* XCRemoteSwiftPackageReference "Foundation" */,
+				3DB0A19E2798B45200F02D15 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = A19192141F44E8390071FF62 /* Products */;
 			projectDirPath = "";
@@ -1112,6 +1118,14 @@
 				minimumVersion = 4.1.0;
 			};
 		};
+		3DB0A19E2798B45200F02D15 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1129,6 +1143,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D82878923D0064300DFFFC2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		3DB0A19F2798B45200F02D15 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DB0A19E2798B45200F02D15 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		3DD1907C2436B81300DFC597 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

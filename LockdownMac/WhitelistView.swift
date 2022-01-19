@@ -15,6 +15,8 @@ struct WhitelistView: View {
     var whitelistedDomains: [WhitelistedDomain] = getLockdownWhitelistedDomainsArray()
     @State var userWhitelistedDomains: [WhitelistedDomain] = getUserWhitelistedDomainsArray()
     
+    @State private var forceRefresh: String = ""
+    
     var body: some View {
 
         VStack(spacing: 0.0) {
@@ -49,7 +51,10 @@ struct WhitelistView: View {
                                 Button(
                                     action: {
                                         setLockdownWhitelistedDomain(domain: domain.domain, enabled: !domain.enabled)
-                                        VPNController.shared.restart()
+                                        if (getUserWantsVPNEnabled()) {
+                                            VPNController.shared.restart()
+                                        }
+                                        forceRefresh = forceRefresh + "1"
                                 }) {
                                     Text(domain.enabled ? "Whitelisted" : "Not Whitelisted")
                                     .font(cFontSmall)
@@ -73,6 +78,9 @@ struct WhitelistView: View {
                             // TODO: url checking
                             self.addDomain()
                         })
+                        .introspectTextField { textField in
+                            textField.becomeFirstResponder()
+                        }
                         Button(action: {
                             self.addDomain()
                         }) {
@@ -94,7 +102,10 @@ struct WhitelistView: View {
                                 Button(
                                     action: {
                                         setUserWhitelistedDomain(domain: domain.domain, enabled: !domain.enabled)
-                                        VPNController.shared.restart()
+                                        if (getUserWantsVPNEnabled()) {
+                                            VPNController.shared.restart()
+                                        }
+                                        forceRefresh = forceRefresh + "1"
                                 }) {
                                     Text(domain.enabled ? "Whitelisted" : "Not Whitelisted")
                                     .font(cFontSmall)
@@ -102,7 +113,10 @@ struct WhitelistView: View {
                                 Button(action: {
                                     deleteUserWhitelistedDomain(domain: domain.domain)
                                     self.userWhitelistedDomains.remove(at: index)
-                                    VPNController.shared.restart()
+                                    if (getUserWantsVPNEnabled()) {
+                                        VPNController.shared.restart()
+                                    }
+                                    forceRefresh = forceRefresh + "1"
                                 }) {
                                     Text("×")
                                         .padding(.bottom, 2)
@@ -123,6 +137,7 @@ struct WhitelistView: View {
             }
         }
         .frame(width: viewWidth * 1.9, height: viewHeight * 2/3)
+        .id(forceRefresh)
     }
     
     func addDomain() {
@@ -131,7 +146,10 @@ struct WhitelistView: View {
             addUserWhitelistedDomain(domain: self.newDomain.lowercased())
             self.newDomain = ""
             userWhitelistedDomains = getUserWhitelistedDomainsArray()
-            VPNController.shared.restart()
+            if (getUserWantsVPNEnabled()) {
+                VPNController.shared.restart()
+            }
+            forceRefresh = forceRefresh + "1"
         }
     }
     

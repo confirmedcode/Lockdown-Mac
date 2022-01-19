@@ -61,7 +61,7 @@ final class BlockLogWindowController: NSWindowController, NSWindowDelegate {
             backing: .buffered,
             defer: false
         )
-        window.title = "Lockdown"
+        window.title = "Lockdown Privacy - Block Log"
         let hosting = NSHostingView(rootView: mainView)
         window.contentView = hosting
 
