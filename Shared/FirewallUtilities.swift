@@ -134,7 +134,7 @@ func metricsToString(metric : Int) -> String {
         return "\(Int(metric / 1000))k"
     }
     else {
-        return "\(Int(metric / 1000000))m"
+        return "\(String(format: "%.2f", (Double(metric) / Double(1000000))))m"
     }
 }
 
@@ -172,7 +172,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let crypto = LockdownGroup.init(
-        version: 26,
+        version: 29,
         internalID: "crypto_mining",
         name: "Crypto Mining",
         iconURL: "crypto_icon",
@@ -190,7 +190,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let facebookInc = LockdownGroup.init(
-        version: 31,
+        version: 33,
         internalID: "facebook_inc",
         name: "Facebook & WhatsApp",
         iconURL: "facebook_icon",
@@ -208,7 +208,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScripts = LockdownGroup.init(
-        version: 29,
+        version: 31,
         internalID: "marketing_scripts",
         name: "Marketing Trackers",
         iconURL: "marketing_icon",
@@ -226,7 +226,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
 
     let ransomware = LockdownGroup.init(
-        version: 26,
+        version: 29,
         internalID: "ransomware",
         name: "Ransomware",
         iconURL: "ransomware_icon",
@@ -527,6 +527,8 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "att.com.edgesuite.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "att.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "bamgrid.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "bestbuy.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "bitwarden.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "brightcove.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cbs.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cbsaavideo.com")
@@ -566,6 +568,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "icloud.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "kroger.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "letsencrypt.org")
+    addLockdownWhitelistedDomainIfNotExists(domain: "livenation.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "lowes.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "lync.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
@@ -589,8 +592,10 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "office.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "office.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "office365.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "opentable.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "outlook.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "peacocktv.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "personalcapital.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "philo.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "quibi.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "quickplay.com")
@@ -613,6 +618,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "tapbots.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "telegram.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "teslamotors.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "ticketmaster.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "ttvnw.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "twimg.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "twitter.com")
