@@ -79,7 +79,13 @@ struct WhitelistView: View {
                             self.addDomain()
                         })
                         .introspectTextField { textField in
-                            textField.becomeFirstResponder()
+                            if (textField.currentEditor() != nil) {
+                                // is already selected, don't become first responder
+                            }
+                            else {
+                                print("Setting whitelist first responder")
+                                textField.becomeFirstResponder()
+                            }
                         }
                         Button(action: {
                             self.addDomain()

@@ -58,7 +58,14 @@ struct BlockListsView: View {
                             self.addDomain()
                         })
                         .introspectTextField { textField in
-                            textField.becomeFirstResponder()
+                            // BUG: Catalina runs this an infinite loop so we have to check that we are only doing it once
+                            if (textField.currentEditor() != nil) {
+                                // is already selected, don't become first responder
+                            }
+                            else {
+                                print("Setting Custom domain first responder")
+                                textField.becomeFirstResponder()
+                            }
                         }
                         Button(action: {
                             self.addDomain()
