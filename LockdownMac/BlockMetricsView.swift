@@ -51,6 +51,8 @@ struct BlockMetricsView: View {
             }
             .frame(width: viewWidth, height: 60)
             .onReceive(timer) { input in
+                resetDayIfNecessary()
+                resetWeekIfNecessary()
                 self.dayMetrics = getDayMetricsString()
                 self.weekMetrics = getWeekMetricsString()
                 self.totalMetrics = getTotalMetricsString()

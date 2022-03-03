@@ -70,22 +70,14 @@ func incrementMetricsAndLog(host: String) {
     defaults.set(Int(getTotalMetrics() + 1), forKey: kTotalMetrics)
     
     // WEEKLY - reset metrics on new week and increment week
-    let currentWeek = currentCalendar.component(.weekOfYear, from: date)
-    if currentWeek != defaults.integer(forKey: kActiveWeek) {
-        defaults.set(0, forKey: kWeekMetrics)
-        defaults.set(currentWeek, forKey: kActiveWeek)
-    }
+    resetWeekIfNecessary()
     defaults.set(Int(getWeekMetrics() + 1), forKey: kWeekMetrics)
     
     // DAY - reset metric on new day and increment day and log
     // set day metric
-    let currentDay = currentCalendar.component(.day, from: date)
-    if currentDay != defaults.integer(forKey: kActiveDay) {
-        defaults.set(0, forKey: kDayMetrics)
-        defaults.set(currentDay, forKey: kActiveDay)
-        defaults.set([], forKey:kDayLogs);
-    }
+    resetDayIfNecessary()
     defaults.set(Int(getDayMetrics() + 1), forKey: kDayMetrics)
+    
     // set log
     let logString = blockLogDateFormatter.string(from: date) + host;
     // reduce log size if it's over the maxSize
@@ -100,6 +92,25 @@ func incrementMetricsAndLog(host: String) {
         defaults.set([logString], forKey: kDayLogs);
     }
     
+}
+
+func resetWeekIfNecessary() {
+    let date = Date()
+    let currentWeek = currentCalendar.component(.weekOfYear, from: date)
+    if currentWeek != defaults.integer(forKey: kActiveWeek) {
+        defaults.set(0, forKey: kWeekMetrics)
+        defaults.set(currentWeek, forKey: kActiveWeek)
+    }
+}
+
+func resetDayIfNecessary() {
+    let date = Date()
+    let currentDay = currentCalendar.component(.day, from: date)
+    if currentDay != defaults.integer(forKey: kActiveDay) {
+        defaults.set(0, forKey: kDayMetrics)
+        defaults.set(currentDay, forKey: kActiveDay)
+        defaults.set([], forKey:kDayLogs);
+    }
 }
 
 func getDayMetrics() -> Int {
