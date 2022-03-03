@@ -20,9 +20,19 @@ struct BlockLogView: View {
         VStack(spacing: 0.0) {
             Section(header:
                 VStack {
-                    Text("Today's Block Log")
-                        .font(cFontTitle)
-                        .padding(.vertical, 10)
+                    HStack {
+                        Text("Today's Block Log")
+                            .font(cFontTitle)
+                            .padding(.vertical, 10)
+                        Spacer()
+                        Button(
+                            action: {
+                                defaults.set([], forKey:kDayLogs);
+                        }) {
+                            Text("Clear").font(cFontSmall)
+                        }
+                    }
+                    .padding(.horizontal, 12)
                     Text("The connections blocked by Lockdown since midnight today are shown below. As per our Privacy Policy, all the blocking is done on-device and never transmitted to any servers for processing.")
                         .font(cFontRegularSmall)
                         .padding(.bottom, 10)
