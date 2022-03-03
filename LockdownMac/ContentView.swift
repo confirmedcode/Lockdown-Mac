@@ -257,7 +257,7 @@ struct ContentView: View {
                         DDLogInfo("audit report opened")
                     }
                 }) {
-                    Text("April 2021")
+                    Text("February 2022")
                         .font(cFontSubtitle2)
                         .foregroundColor(Color.confirmedBlue)
                         .frame(width: 150, height: 18)
